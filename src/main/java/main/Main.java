@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import clases.ObjetoConNombre;
+import clases.Personaje;
 import clasesDAO.Arma;
 import clasesDAO.ObjetoDefensivo;
 import clasesDAO.PocionMana;
@@ -13,7 +14,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 		try {
 			Arma espada = new Arma("Espada de Madera");
 			System.out.println(espada);

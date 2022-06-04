@@ -1,51 +1,89 @@
 use dungeon;
 
+CREATE TABLE hechizo(
+nombre VARCHAR(100) NOT NULL,
+PRIMARY KEY ( nombre ),
+puntosAtaque INT,
+costeMana INT
+);
 
-#Creamos tabla Arma, que referencia a objeto con Nombre, usamos como FK el PK del objeto con Nombre
+INSERT INTO hechizo VALUES ('Bola de Fuego',10,5);
+INSERT INTO hechizo VALUES ('Descarga de Escarcha',7,3);
+
+SELECT * FROM hechizo;
+
+
+CREATE TABLE mago(
+nombre VARCHAR(100) NOT NULL,
+PRIMARY KEY ( nombre ),
+vida INT,
+ataque INT,
+defensa INT,
+hechizo VARCHAR(100),
+FOREIGN KEY (hechizo) REFERENCES hechizo(nombre)
+);
+
+ALTER TABLE mago ADD COLUMN mana INTEGER;
+
+
+INSERT INTO mago VALUES ('Gideon',100,4,8,'Bola de Fuego',100);
+
+CREATE TABLE enemigo(
+nombre VARCHAR(100) NOT NULL,
+PRIMARY KEY ( nombre ),
+vida INT,
+ataque INT,
+defensa INT
+);
+
+INSERT INTO enemigo VALUES ('Globlin Escavador',20,3,2);
+INSERT INTO enemigo VALUES ('Globlin Mimico',40,1,6);
+INSERT INTO enemigo VALUES ('Globlin Escondido',20,7,1);
+INSERT INTO enemigo VALUES ('Globlin Rastreador',10,7,4);
+
+
+CREATE TABLE jefeFinal(
+nombre VARCHAR(100) NOT NULL,
+PRIMARY KEY ( nombre ),
+vida INT,
+ataque INT,
+defensa INT
+);
+
+INSERT INTO jefeFinal VALUES ('Cermuzork, El Goblin Primigenio',80,5,7);
+
 CREATE TABLE arma(
 nombre VARCHAR(100) NOT NULL,
 PRIMARY KEY ( nombre ),
-puntosAtaque INT NOT NULL
+puntosDeAtaque INT
 );
-INSERT INTO arma (nombre,puntosAtaque) VALUES ('Espada de Madera',2);
-INSERT INTO arma (nombre,puntosAtaque) VALUES ('Daga Dentada',4);
-INSERT INTO arma (nombre,puntosAtaque) VALUES ('Arco Curvo',7);
-INSERT INTO arma (nombre,puntosAtaque) VALUES ('Hacha de Guerra',6);
-INSERT INTO arma (nombre,puntosAtaque) VALUES ('Bastón Cariano',4);
 
-DROP TABLE arma;
-SELECT * FROM arma;
+INSERT INTO arma VALUES ('Arco Curvo',10);
+INSERT INTO arma VALUES ('Espadon',7);
 
-#Creamos tabla objetoDefensivo, que referencia a objeto con Nombre, usamos como FK el PK del objeto con Nombre
 CREATE TABLE objetoDefensivo(
 nombre VARCHAR(100) NOT NULL,
 PRIMARY KEY ( nombre ),
-puntosDefensivos INT NOT NULL
+puntosDeDefensa INT
 );
-INSERT INTO objetoDefensivo (nombre,puntosDefensivos) VALUES ('Saco de Harina',2);
-INSERT INTO objetoDefensivo (nombre,puntosDefensivos) VALUES ('Armadura de Cuero',5);
-INSERT INTO objetoDefensivo (nombre,puntosDefensivos) VALUES ('Cota de Malla',6);
-INSERT INTO objetoDefensivo (nombre,puntosDefensivos) VALUES ('Armadura de placas de Hierro',8);
-INSERT INTO objetoDefensivo (nombre,puntosDefensivos) VALUES ('Tunica de Mago',4);
-
-DROP TABLE objetoDefensivo;
-
-SELECT * FROM objetoDefensivo;
+INSERT INTO objetoDefensivo VALUES ('Tunica de Mago',2);
+INSERT INTO objetoDefensivo VALUES ('Armadura de Cuero',4);
+INSERT INTO objetoDefensivo VALUES ('Cota de malla',7);
 
 CREATE TABLE pocionVida(
 nombre VARCHAR(100) NOT NULL,
 PRIMARY KEY ( nombre ),
-vidaRecuperada INT NOT NULL
+vidaRecuperada INT
 );
 
-INSERT INTO pocionVida (nombre,vidaRecuperada) VALUES ('Frascos de Estus',15);
-
+INSERT INTO pocionVida VALUES ('Frasco Estus',15);
 
 
 CREATE TABLE pocionMana(
 nombre VARCHAR(100) NOT NULL,
 PRIMARY KEY ( nombre ),
-manaRecuperada INT NOT NULL
+manaRecuperado INT
 );
 
-INSERT INTO pocionMana (nombre,manaRecuperada) VALUES ('Frasco de Mana',20);
+INSERT INTO pocionMana VALUES ('Pocion Mana',20);
+
