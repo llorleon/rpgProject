@@ -28,6 +28,28 @@ ALTER TABLE mago ADD COLUMN mana INTEGER;
 
 INSERT INTO mago VALUES ('Gideon',100,4,8,'Bola de Fuego',100);
 
+
+CREATE TABLE guerrero(
+nombre VARCHAR(100) NOT NULL,
+PRIMARY KEY ( nombre ),
+vida INT,
+ataque INT,
+defensa INT
+);
+
+INSERT INTO guerrero VALUES ('Freekiller',120,7,10);
+
+CREATE TABLE arquero(
+nombre VARCHAR(100) NOT NULL,
+PRIMARY KEY ( nombre ),
+vida INT,
+ataque INT,
+defensa INT
+);
+
+INSERT INTO arquero VALUES ('Laion',80,10,6);
+
+
 CREATE TABLE enemigo(
 nombre VARCHAR(100) NOT NULL,
 PRIMARY KEY ( nombre ),
@@ -86,4 +108,25 @@ manaRecuperado INT
 );
 
 INSERT INTO pocionMana VALUES ('Pocion Mana',20);
+
+CREATE TABLE lugares (
+nombre VARCHAR(100) NOT NULL,
+PRIMARY KEY ( nombre )
+);
+
+INSERT INTO lugares VALUES ('Pantano humedo');
+INSERT INTO lugares VALUES ('Cienaga de la bruja');
+INSERT INTO lugares VALUES ('Cenec'); #ENEMIGO FINAL
+INSERT INTO lugares VALUES ('Fortaleza de Freekiller');
+INSERT INTO lugares VALUES ('Cueva Goblin');
+INSERT INTO lugares VALUES ('Pradera loca');
+INSERT INTO lugares VALUES ('Crisol de los Goblins');
+INSERT INTO lugares VALUES ('Sotano satanico');
+INSERT INTO lugares VALUES ('Templo Oscuro');
+INSERT INTO lugares VALUES ('Camaras Mogu');
+INSERT INTO lugares VALUES ('Solio del Trueno');
+INSERT INTO lugares VALUES ('Fortaleza Orca');
+
+
+
 
