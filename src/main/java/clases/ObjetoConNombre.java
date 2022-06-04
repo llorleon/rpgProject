@@ -13,6 +13,11 @@ public class ObjetoConNombre {
 
 		this.nombre = nombre;
 	}
+	
+	public ObjetoConNombre() {
+		
+		
+	}
 
 	public String getNombre() {
 		return nombre;

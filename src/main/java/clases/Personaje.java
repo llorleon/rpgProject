@@ -20,6 +20,11 @@ public class Personaje extends ObjetoConNombre {
 		this.inventario = inventario;
 	}
 
+	public Personaje() {
+		
+		
+	}
+	
 	public int getVida() {
 		return vida;
 	}
@@ -49,6 +54,8 @@ public class Personaje extends ObjetoConNombre {
 	}
 
 	public void setInventario(List<ObjetoConNombre> inventario) {
+		
+		
 		this.inventario = inventario;
 	}
 

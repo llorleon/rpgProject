@@ -9,6 +9,8 @@ import javax.swing.SwingConstants;
 
 import clases.Mapa;
 import clases.Personaje;
+import clasesDAO.Arquero;
+import clasesDAO.Guerrero;
 import clasesDAO.Mago;
 
 import javax.swing.JButton;
@@ -43,6 +45,24 @@ public class SeleccionPersonaje extends JPanel {
 		add(titulo, gbc_titulo);
 
 		JButton guerrero = new JButton("Guerrero");
+		guerrero.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Mapa mapa;
+				try {
+					Guerrero guerrero = new Guerrero();
+
+					mapa = new Mapa();
+					System.out.println(mapa);
+					System.out.println(guerrero);
+
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}
+		});
 		GridBagConstraints gbc_guerrero = new GridBagConstraints();
 		gbc_guerrero.insets = new Insets(0, 0, 5, 0);
 		gbc_guerrero.gridx = 0;
@@ -50,6 +70,22 @@ public class SeleccionPersonaje extends JPanel {
 		add(guerrero, gbc_guerrero);
 
 		JButton arquero = new JButton("Arquero");
+		arquero.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				try {
+					Mapa mapa = new Mapa();
+					Arquero arquero = new Arquero();
+
+					System.out.println(arquero);
+					System.out.println(mapa);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		GridBagConstraints gbc_arquero = new GridBagConstraints();
 		gbc_arquero.insets = new Insets(0, 0, 5, 0);
 		gbc_arquero.gridx = 0;
@@ -62,7 +98,9 @@ public class SeleccionPersonaje extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					Mapa mapa = new Mapa();
+					Mago mago = new Mago();
 
+					System.out.println(mago);
 					System.out.println(mapa);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block

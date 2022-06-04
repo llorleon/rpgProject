@@ -11,6 +11,7 @@ import clases.ObjetoConNombre;
 import clases.Personaje;
 import clasesDAO.Arma;
 import clasesDAO.Enemigo;
+import clasesDAO.Guerrero;
 import clasesDAO.Mago;
 import clasesDAO.ObjetoDefensivo;
 import clasesDAO.PocionMana;

@@ -13,13 +13,43 @@ import utils.ConexionBD;
 public class Mago extends Personaje {
 
 	private int mana;
-	private List<Hechizo> hechizos = new ArrayList<Hechizo>();
+	private Hechizo hechizos;
 
 	public Mago(String nombre, int vida, int ataque, int defensa, List<ObjetoConNombre> inventario, int mana,
-			List<Hechizo> hechizos) throws SQLException {
+			Hechizo hechizos) throws SQLException {
 		super(nombre, vida, ataque, defensa, inventario);
 		this.mana = mana;
 		this.hechizos = hechizos;
+	}
+
+	public Mago() throws SQLException {
+		ObjetoDefensivo tunica = new ObjetoDefensivo("Tunica de Mago");
+		List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();
+		inventario.add(tunica);
+		setInventario(inventario);
+		Statement smt = ConexionBD.conectar();
+		ResultSet cursor = smt.executeQuery("select * from mago");
+
+		if (cursor.next()) {
+
+			setNombre(cursor.getString("nombre"));
+			setAtaque(cursor.getInt("ataque"));
+			setVida(cursor.getInt("vida"));
+			setDefensa(cursor.getInt("defensa"));
+			this.mana = cursor.getInt("mana");
+		}
+
+		ResultSet cursor2 = smt.executeQuery("select * from hechizo WHERE nombre ='Bola de Fuego'");
+
+		if (cursor2.next()) {
+
+			Hechizo bolita = new Hechizo(cursor2.getString("nombre"), cursor2.getInt("puntosAtaque"),
+					cursor2.getInt("costeMana"));
+			this.hechizos = bolita;
+
+		}
+		ConexionBD.desconectar();
+
 	}
 
 	public int getMana() {
@@ -30,17 +60,17 @@ public class Mago extends Personaje {
 		this.mana = mana;
 	}
 
-	public List<Hechizo> getHechizos() {
+	public Hechizo getHechizos() {
 		return hechizos;
 	}
 
-	public void setHechizos(List<Hechizo> hechizos) {
+	public void setHechizos(Hechizo hechizos) {
 		this.hechizos = hechizos;
 	}
 
 	@Override
 	public String toString() {
-		return "Mago [mana=" + mana + ", hechizos=" + hechizos + "]";
+		return "Mago [mana=" + mana + "\n" + hechizos + "\n"+getInventario();
 	}
 
 }
