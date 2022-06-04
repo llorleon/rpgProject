@@ -24,13 +24,14 @@ public class ObjetoDefensivo extends ObjetoConNombre {
 
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery(
-				"select nombre, puntosDefensivos from objetoDefensivo where nombre = '" + defensaObjetoNombre + "';");
-
+				"select * from objetoDefensivo where nombre = '" + defensaObjetoNombre + "';");
 		if (cursor.next()) {
 
-			this.puntosDefensa = cursor.getByte("puntosDefensivos");
+			this.puntosDefensa = cursor.getByte("puntosDeDefensa");
 			this.defensaObjetoNombre = cursor.getString("nombre");
 		}
+
+		// TODO Auto-generated catch block
 		ConexionBD.desconectar();
 
 	}

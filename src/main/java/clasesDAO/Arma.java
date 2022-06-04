@@ -17,13 +17,13 @@ import utils.ConexionBD;
 public class Arma extends ObjetoConNombre {
 
 	private byte puntosAtaque;
-	private String armaObjetoNombre;
+	private String nombreArma;
 
 	public Arma(byte puntosAtaque, String armaObjetoNombre) throws SQLException {
 		super(armaObjetoNombre);
 
 		this.puntosAtaque = puntosAtaque;
-		this.armaObjetoNombre = armaObjetoNombre;
+		this.nombreArma = armaObjetoNombre;
 
 	}
 
@@ -31,12 +31,12 @@ public class Arma extends ObjetoConNombre {
 		super(armaObjetoNombre);
 
 		Statement smt = ConexionBD.conectar();
-		ResultSet cursor = smt
-				.executeQuery("select nombre, puntosAtaque from arma where nombre = '" + armaObjetoNombre + "';");
+		ResultSet cursor = smt.executeQuery(
+				"select * from arma where nombre = '" + armaObjetoNombre + "';");
 		if (cursor.next()) {
 
-			this.puntosAtaque = cursor.getByte("puntosAtaque");
-			this.armaObjetoNombre = cursor.getString("nombre");
+			this.puntosAtaque = cursor.getByte("puntosDeAtaque");
+			this.nombreArma = cursor.getString("nombre");
 		}
 
 		// TODO Auto-generated catch block
@@ -54,12 +54,12 @@ public class Arma extends ObjetoConNombre {
 	}
 
 	public void setArmaObjetoNombre(String armaObjetoNombre) {
-		this.armaObjetoNombre = armaObjetoNombre;
+		this.nombreArma = armaObjetoNombre;
 	}
 
 	@Override
 	public String toString() {
-		return "Arma [Puntos de ataque =" + puntosAtaque + ", Nombre del Arma = " + armaObjetoNombre + "]";
+		return "Arma [Puntos de ataque =" + puntosAtaque + ", Nombre del Arma = " + nombreArma + "]";
 	}
 
 }
