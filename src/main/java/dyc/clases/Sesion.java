@@ -1,15 +1,11 @@
 package dyc.clases;
 
-import dyc.dao.Arma;
-import dyc.dao.Enemigo;
-
 public class Sesion {
 
 	private Personaje personaje;
 	private Mapa mapa;
 
 	public Sesion(Personaje personaje, Mapa mapa) {
-		super();
 		this.personaje = personaje;
 		this.mapa = mapa;
 	}

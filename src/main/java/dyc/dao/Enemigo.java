@@ -6,8 +6,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dyc.clases.Lugar;
-import dyc.clases.ObjetoConNombre;
 import dyc.db.ConexionBD;
 
 public class Enemigo {

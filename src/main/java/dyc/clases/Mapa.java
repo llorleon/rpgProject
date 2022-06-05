@@ -1,25 +1,37 @@
 package dyc.clases;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-
-import dyc.dao.Enemigo;
 
 public class Mapa {
+	private Lugar[][] lugares;
+	private int lugar;
 
 	public Mapa() throws SQLException {
-		Lugar lugares = new Lugar();
+		lugares = new Lugar[3][3];
 		
-		System.out.println(lugares.LugarRandom());
+		for (int i = 0; i < lugares.length; i++) {
+			for (int j = 0; j < lugares[i].length; j++) {
+				lugares[i][j] = new Lugar();
+			}
+		}
+		
+		lugar = 0;
+	}
+	
+	private void avanzaLugar() {
+		lugar++;
+	}
+	
+	public Lugar getLugar() {
+		int i = lugar / lugares[0].length;
+        int j = lugar % lugares[0].length;
 		
 		
+		return lugares[i][j];
 	}
 
 	@Override
 	public String toString() {
-		return "";
+		return "Estas en la zona " + getLugar().getNombre();
 	}
-	
-	
-	
 }

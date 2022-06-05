@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Personaje extends ObjetoConNombre {
-
 	private int vida;
 	private int ataque;
 	private int defensa;
@@ -21,7 +20,6 @@ public abstract class Personaje extends ObjetoConNombre {
 	}
 
 	public Personaje() {
-		
 		
 	}
 	
