@@ -12,18 +12,19 @@ public class Ventana extends JFrame {
 	
 	private static final long serialVersionUID = 7034760431371082687L;
 	
-	private JPanel pantallaActual;
 	public Ventana(Sesion sesion) throws SQLException {
-		this.setIconImage(new ImageIcon("./logo.png").getImage());
-		this.setSize(600, 300);
-		this.setLocationRelativeTo(null);
-		this.setResizable(false);
-		this.setTitle("Dungeon & Goblins");
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setIconImage(new ImageIcon("./logo.png").getImage());
+		setSize(600, 300);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		setTitle("Dungeon & Goblins");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		this.pantallaActual=new SeleccionPersonaje(this, sesion);
-		this.setContentPane(this.pantallaActual);
-		
+		cambiaPantalla(new SeleccionPersonaje(this, sesion));
 	}
-
+	
+	public void cambiaPantalla(JPanel pantalla) {
+		setContentPane(pantalla);
+		revalidate();
+	}
 }

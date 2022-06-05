@@ -21,11 +21,11 @@ public class PocionMana extends Pocion {
 		
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery(
-				"select nombre, manaRecuperada from pocionMana where nombre = '" + pocionNombre + "';");
+				"select nombre, manaRecuperado from pocionMana where nombre = '" + pocionNombre + "';");
 
 		if (cursor.next()) {
 
-			this.manaRecuperada = cursor.getByte("manaRecuperada");
+			this.manaRecuperada = cursor.getByte("manaRecuperado");
 			this.pocionNombre = cursor.getString("nombre");
 		}
 		ConexionBD.desconectar();

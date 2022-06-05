@@ -26,11 +26,6 @@ public class Lugar extends ObjetoConNombre {
 		pocion = Pocion.generaPocion(personaje instanceof Mago);
 	}
 
-	@Override
-	public String toString() {
-		return getNombre();
-	}
-
 	public Enemigo getEnemigo() {
 		return enemigo;
 	}
@@ -45,6 +40,21 @@ public class Lugar extends ObjetoConNombre {
 
 	public void setPocion(Pocion pocion) {
 		this.pocion = pocion;
+	}
+	
+	@Override
+	public String toString() {
+		String texto = "Llegas a " + getNombre();
+		
+		if (enemigo != null && pocion == null) {
+			texto += " y te encuentras un " + enemigo;
+		} else if (enemigo == null && pocion != null) {
+			texto += " y te encuentras una " + pocion;
+		} else if (enemigo != null && pocion != null) {
+			texto += " y te encuentras un " + enemigo + " que tiene una " + pocion;
+		}
+		
+		return texto;
 	}
 
 }

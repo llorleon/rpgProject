@@ -59,8 +59,8 @@ public class SeleccionPersonaje extends JPanel {
 					sesion.setPersonaje(mago);
 
 					System.out.println(mago);
+					v.cambiaPantalla(new VentanaJuego(v, sesion));
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (EnemigoException ee) {
 					ee.printStackTrace();
@@ -81,6 +81,7 @@ public class SeleccionPersonaje extends JPanel {
 					sesion.setPersonaje(arquero);
 
 					System.out.println(arquero);
+					v.cambiaPantalla(new VentanaJuego(v, sesion));
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -101,6 +102,7 @@ public class SeleccionPersonaje extends JPanel {
 					sesion.setPersonaje(guerrero);
 
 					System.out.println(guerrero);
+					v.cambiaPantalla(new VentanaJuego(v, sesion));
 
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
