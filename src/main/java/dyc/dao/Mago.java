@@ -1,4 +1,4 @@
-package clasesDAO;
+package dyc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -6,9 +6,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import clases.ObjetoConNombre;
-import clases.Personaje;
-import utils.ConexionBD;
+import dyc.clases.ObjetoConNombre;
+import dyc.clases.Personaje;
+import dyc.db.ConexionBD;
 
 public class Mago extends Personaje {
 

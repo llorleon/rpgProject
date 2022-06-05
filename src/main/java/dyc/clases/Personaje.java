@@ -1,10 +1,10 @@
-package clases;
+package dyc.clases;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Personaje extends ObjetoConNombre {
+public abstract class Personaje extends ObjetoConNombre {
 
 	private int vida;
 	private int ataque;

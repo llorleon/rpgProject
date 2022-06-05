@@ -1,4 +1,4 @@
-package interfacesGrafica;
+package dyc.gui;
 
 import java.sql.SQLException;
 
@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Ventana extends JFrame{
+public class Ventana extends JFrame {
 	private JPanel pantallaActual;
 	public Ventana() throws SQLException {
 		this.setIconImage(new ImageIcon("./logo.png").getImage());

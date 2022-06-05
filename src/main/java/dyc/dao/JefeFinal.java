@@ -1,4 +1,4 @@
-package clasesDAO;
+package dyc.dao;
 
 public class JefeFinal {
 

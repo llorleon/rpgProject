@@ -1,9 +1,9 @@
-package clases;
+package dyc.clases;
 
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import utils.ConexionBD;
+import dyc.db.ConexionBD;
 
 public class ObjetoConNombre {
 	private String nombre;

@@ -1,8 +1,8 @@
-package clasesDAO;
+package dyc.dao;
 
 import java.sql.SQLException;
 
-import clases.ObjetoConNombre;
+import dyc.clases.ObjetoConNombre;
 
 public class Hechizo extends ObjetoConNombre {
 

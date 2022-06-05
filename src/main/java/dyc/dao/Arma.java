@@ -1,11 +1,11 @@
-package clasesDAO;
+package dyc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import clases.ObjetoConNombre;
-import utils.ConexionBD;
+import dyc.clases.ObjetoConNombre;
+import dyc.db.ConexionBD;
 
 /**
  * DAO CREADO PARA GENERAR E INTRODUCIR UN ARMA CON UNOS PUNTOS DE ATAQUE Y QUE

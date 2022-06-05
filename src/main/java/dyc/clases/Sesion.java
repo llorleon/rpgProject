@@ -1,7 +1,7 @@
-package clases;
+package dyc.clases;
 
-import clasesDAO.Arma;
-import clasesDAO.Enemigo;
+import dyc.dao.Arma;
+import dyc.dao.Enemigo;
 
 public class Sesion {
 

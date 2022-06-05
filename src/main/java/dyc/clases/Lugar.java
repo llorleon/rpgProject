@@ -1,4 +1,4 @@
-package clases;
+package dyc.clases;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -6,11 +6,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.ConexionBD;
+import dyc.dao.Enemigo;
+import dyc.db.ConexionBD;
 
 public class Lugar {
-
 	private String nombreLugar;
+	Enemigo enemigo = new Enemigo();
+	
 
 	public Lugar(String nombreLugar) throws SQLException {
 		super();

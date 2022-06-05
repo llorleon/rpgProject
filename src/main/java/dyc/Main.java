@@ -1,22 +1,22 @@
-package main;
+package dyc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import clases.Lugar;
-import clases.Mapa;
-import clases.ObjetoConNombre;
-import clases.Personaje;
-import clasesDAO.Arma;
-import clasesDAO.Enemigo;
-import clasesDAO.Guerrero;
-import clasesDAO.Mago;
-import clasesDAO.ObjetoDefensivo;
-import clasesDAO.PocionMana;
-import clasesDAO.PocionVida;
-import interfacesGrafica.Ventana;
+import dyc.clases.Lugar;
+import dyc.clases.Mapa;
+import dyc.clases.ObjetoConNombre;
+import dyc.clases.Personaje;
+import dyc.dao.Arma;
+import dyc.dao.Enemigo;
+import dyc.dao.Guerrero;
+import dyc.dao.Mago;
+import dyc.dao.ObjetoDefensivo;
+import dyc.dao.PocionMana;
+import dyc.dao.PocionVida;
+import dyc.gui.Ventana;
 
 public class Main {
 
