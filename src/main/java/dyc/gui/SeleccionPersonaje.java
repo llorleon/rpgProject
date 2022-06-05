@@ -2,16 +2,14 @@ package dyc.gui;
 
 import javax.swing.JPanel;
 
-import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import dyc.clases.Mapa;
-import dyc.clases.Personaje;
+import dyc.clases.Sesion;
 import dyc.dao.Arquero;
 import dyc.dao.Guerrero;
 import dyc.dao.Mago;
-import dyc.gui.Ventana;
+import dyc.exception.EnemigoException;
 
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
@@ -25,9 +23,9 @@ import java.awt.Font;
 
 public class SeleccionPersonaje extends JPanel {
 
-	private Ventana ventana;
+	private static final long serialVersionUID = -6371461512707126474L;
 
-	public SeleccionPersonaje(Ventana v) throws SQLException {
+	public SeleccionPersonaje(Ventana v, Sesion sesion) throws SQLException {
 		setBackground(Color.BLACK);
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -57,14 +55,15 @@ public class SeleccionPersonaje extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					Mapa mapa = new Mapa();
 					Mago mago = new Mago();
+					sesion.setPersonaje(mago);
 
 					System.out.println(mago);
-					System.out.println(mapa);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				} catch (EnemigoException ee) {
+					ee.printStackTrace();
 				}
 
 			}
@@ -78,14 +77,15 @@ public class SeleccionPersonaje extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 
 				try {
-					Mapa mapa = new Mapa();
 					Arquero arquero = new Arquero();
+					sesion.setPersonaje(arquero);
 
 					System.out.println(arquero);
-					System.out.println(mapa);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				} catch (EnemigoException ee) {
+					ee.printStackTrace();
 				}
 			}
 		});
@@ -96,17 +96,17 @@ public class SeleccionPersonaje extends JPanel {
 		guerrero_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Mapa mapa;
 				try {
 					Guerrero guerrero = new Guerrero();
+					sesion.setPersonaje(guerrero);
 
-					mapa = new Mapa();
-					System.out.println(mapa);
 					System.out.println(guerrero);
 
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				} catch (EnemigoException ee) {
+					ee.printStackTrace();
 				}
 
 			}

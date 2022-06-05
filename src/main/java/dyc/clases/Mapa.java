@@ -2,23 +2,26 @@ package dyc.clases;
 
 import java.sql.SQLException;
 
+import dyc.dao.Lugar;
+import dyc.exception.EnemigoException;
+
 public class Mapa {
 	private Lugar[][] lugares;
 	private int lugar;
 
-	public Mapa() throws SQLException {
+	public Mapa(Personaje personaje) throws SQLException, EnemigoException {
 		lugares = new Lugar[3][3];
 		
 		for (int i = 0; i < lugares.length; i++) {
 			for (int j = 0; j < lugares[i].length; j++) {
-				lugares[i][j] = new Lugar();
+				lugares[i][j] = new Lugar(personaje);
 			}
 		}
 		
 		lugar = 0;
 	}
 	
-	private void avanzaLugar() {
+	public void avanzaLugar() {
 		lugar++;
 	}
 	

@@ -3,13 +3,12 @@ package dyc.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 import dyc.db.ConexionBD;
+import dyc.exception.EnemigoException;
 
 public class Enemigo {
-
 	private String nombre;
 	private int vida;
 	private int ataque;
@@ -22,41 +21,33 @@ public class Enemigo {
 		this.defensa = defensa;
 	}
 
-	public Enemigo() throws SQLException {
-
+	public Enemigo() throws SQLException, EnemigoException {
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery("select * from enemigo ORDER BY RAND() LIMIT 1");
+		
 		if (cursor.next()) {
-
 			this.nombre = cursor.getString("nombre");
 			this.vida = cursor.getInt("vida");
 			this.ataque = cursor.getInt("ataque");
 			this.defensa = cursor.getInt("defensa");
-
+		} else {
+			throw new EnemigoException("No hay enemigos en la base de datos");
 		}
 
-		// TODO Auto-generated catch block
 		ConexionBD.desconectar();
-
 	}
-
-	public List EnemigoRandom() throws SQLException {
-
-		List enemiguitos = new ArrayList();
-
-		for (int i = 0; i < 6; i++) {
-
-			Enemigo enemigoRandom = new Enemigo();
-
-			enemigoRandom.toString();
-			if (!enemiguitos.contains(enemigoRandom.toString())) {
-
-				enemiguitos.add(enemigoRandom);
-
-			}
-
+	
+	public static Enemigo generaEnemigo() throws SQLException, EnemigoException {
+		Enemigo enemigo;
+		Random random = new Random(); 
+		
+		if (random.nextBoolean() == true) {
+		    enemigo = new Enemigo();
+		} else {
+			enemigo = null;
 		}
-		return enemiguitos;
+		
+		return enemigo;
 	}
 
 	public int getVida() {

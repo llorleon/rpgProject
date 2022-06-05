@@ -4,10 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import dyc.clases.ObjetoConNombre;
 import dyc.db.ConexionBD;
 
-public class PocionMana extends ObjetoConNombre{
+public class PocionMana extends Pocion {
 
 	private byte manaRecuperada;
 	private String pocionNombre;
@@ -17,8 +16,8 @@ public class PocionMana extends ObjetoConNombre{
 		this.pocionNombre = pocionNombre;
 	}
 	
-	public PocionMana(String pocionNombre)throws SQLException{
-		super(pocionNombre);
+	public PocionMana()throws SQLException{
+		super("Pocion Mana");
 		
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery(

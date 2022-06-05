@@ -1,5 +1,7 @@
 package dyc.dao;
 
-public class JefeFinal {
+import dyc.clases.ObjetoConNombre;
+
+public class JefeFinal extends ObjetoConNombre{
 
 }

@@ -1,21 +1,25 @@
 package dyc.clases;
 
+import java.sql.SQLException;
+
+import dyc.exception.EnemigoException;
+
 public class Sesion {
 
 	private Personaje personaje;
 	private Mapa mapa;
 
-	public Sesion(Personaje personaje, Mapa mapa) {
-		this.personaje = personaje;
-		this.mapa = mapa;
+	public Sesion() {
+		
 	}
 
 	public Personaje getPersonaje() {
 		return personaje;
 	}
 
-	public void setPersonaje(Personaje personaje) {
+	public void setPersonaje(Personaje personaje) throws SQLException, EnemigoException {
 		this.personaje = personaje;
+		mapa = new Mapa(personaje);
 	}
 
 	public Mapa getMapa() {
@@ -25,5 +29,4 @@ public class Sesion {
 	public void setMapa(Mapa mapa) {
 		this.mapa = mapa;
 	}
-
 }
