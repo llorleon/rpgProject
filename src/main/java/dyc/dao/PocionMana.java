@@ -9,24 +9,14 @@ import dyc.db.ConexionBD;
 public class PocionMana extends Pocion {
 
 	private byte manaRecuperada;
-	private String pocionNombre;
-	public PocionMana(String nombre, byte manaRecuperada, String pocionNombre) throws SQLException {
-		super(nombre);
-		this.manaRecuperada = manaRecuperada;
-		this.pocionNombre = pocionNombre;
-	}
 	
 	public PocionMana()throws SQLException{
-		super("Pocion Mana");
-		
 		Statement smt = ConexionBD.conectar();
-		ResultSet cursor = smt.executeQuery(
-				"select nombre, manaRecuperado from pocionMana where nombre = '" + pocionNombre + "';");
+		ResultSet cursor = smt.executeQuery("select * from pocionMana;");
 
 		if (cursor.next()) {
-
 			this.manaRecuperada = cursor.getByte("manaRecuperado");
-			this.pocionNombre = cursor.getString("nombre");
+			setNombre(cursor.getString("nombre"));
 		}
 		ConexionBD.desconectar();
 		
@@ -37,17 +27,8 @@ public class PocionMana extends Pocion {
 	public void setManaRecuperada(byte manaRecuperada) {
 		this.manaRecuperada = manaRecuperada;
 	}
-	public String getPocionNombre() {
-		return pocionNombre;
-	}
-	public void setPocionNombre(String pocionNombre) {
-		this.pocionNombre = pocionNombre;
-	}
 	@Override
 	public String toString() {
-		return "PocionMana [Cantidad de Mana recuperado : " + manaRecuperada + ", Nombre del vial de mana : " + pocionNombre + "]";
+		return super.toString() + ", pocion de mana que recupera " + manaRecuperada;
 	}
-	
-	
-
 }

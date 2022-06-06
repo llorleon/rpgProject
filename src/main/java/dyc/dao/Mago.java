@@ -15,13 +15,6 @@ public class Mago extends Personaje {
 	private int mana;
 	private Hechizo hechizo;
 
-	public Mago(String nombre, int vida, int ataque, int defensa, List<ObjetoConNombre> inventario, int mana,
-			Hechizo hechizo) throws SQLException {
-		super(nombre, vida, ataque, defensa, inventario);
-		this.mana = mana;
-		this.hechizo = hechizo;
-	}
-
 	public Mago() throws SQLException {
 		ObjetoDefensivo tunica = new ObjetoDefensivo("Tunica de Mago");
 		List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();

@@ -6,6 +6,10 @@ import java.util.Random;
 import dyc.clases.ObjetoConNombre;
 
 public class Pocion extends ObjetoConNombre {
+	public Pocion() {
+
+	}
+	
 	public Pocion(String nombre) throws SQLException {
 		super(nombre);
 	}
@@ -26,5 +30,10 @@ public class Pocion extends ObjetoConNombre {
 		}
 		
 		return pocion;
+	}
+	
+	@Override
+	public String toString() {
+		return getNombre();
 	}
 }

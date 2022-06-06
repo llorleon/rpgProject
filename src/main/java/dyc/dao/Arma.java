@@ -18,13 +18,6 @@ public class Arma extends ObjetoConNombre {
 
 	private byte puntosAtaque;
 
-	public Arma(byte puntosAtaque, String armaObjetoNombre) throws SQLException {
-		super(armaObjetoNombre);
-
-		this.puntosAtaque = puntosAtaque;
-
-	}
-
 	public Arma(String armaObjetoNombre) throws SQLException {
 		super(armaObjetoNombre);
 
@@ -37,7 +30,6 @@ public class Arma extends ObjetoConNombre {
 			setNombre(cursor.getString("nombre"));
 		}
 
-		// TODO Auto-generated catch block
 		ConexionBD.desconectar();
 
 	}

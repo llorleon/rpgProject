@@ -10,13 +10,7 @@ import dyc.db.ConexionBD;
 public class ObjetoDefensivo extends ObjetoConNombre {
 
 	private byte puntosDefensa;
-
-	public ObjetoDefensivo(byte puntosDefensa, String defensaObjetoNombre) throws SQLException {
-		super(defensaObjetoNombre);
-
-		this.puntosDefensa = puntosDefensa;
-	}
-
+	
 	public ObjetoDefensivo(String defensaObjetoNombre) throws SQLException {
 		super(defensaObjetoNombre);
 

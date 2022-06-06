@@ -49,12 +49,11 @@ public class Lugar extends ObjetoConNombre {
 		if (enemigo != null && pocion == null) {
 			texto += " y te encuentras un " + enemigo;
 		} else if (enemigo == null && pocion != null) {
-			texto += " y te encuentras una " + pocion;
+			texto += " y te encuentras " + pocion;
 		} else if (enemigo != null && pocion != null) {
-			texto += " y te encuentras un " + enemigo + " que tiene una " + pocion;
+			texto += " y te encuentras un " + enemigo + " que tiene " + pocion;
 		}
 		
 		return texto;
 	}
-
 }

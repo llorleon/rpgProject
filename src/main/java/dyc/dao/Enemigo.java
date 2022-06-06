@@ -14,13 +14,6 @@ public class Enemigo {
 	private int ataque;
 	private int defensa;
 
-	public Enemigo(String nombre, int vida, int ataque, int defensa) throws SQLException {
-		this.nombre=nombre;
-		this.vida = vida;
-		this.ataque = ataque;
-		this.defensa = defensa;
-	}
-
 	public Enemigo() throws SQLException, EnemigoException {
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery("select * from enemigo ORDER BY RAND() LIMIT 1");

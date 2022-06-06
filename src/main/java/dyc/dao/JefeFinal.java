@@ -16,15 +16,6 @@ public class JefeFinal extends ObjetoConNombre {
 	private int ataque;
 	private int defensa;
 
-	public JefeFinal(String nombre, int vida, int ataque, int defensa) throws SQLException, EnemigoException {
-		super(nombre);
-
-		this.nombre = nombre;
-		this.vida = vida;
-		this.ataque = ataque;
-		this.defensa = defensa;
-	}
-
 	public JefeFinal() throws SQLException, EnemigoException {
 		super("Cermuzork, El Goblin Primigenio");
 

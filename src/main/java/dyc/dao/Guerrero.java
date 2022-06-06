@@ -12,12 +12,6 @@ import dyc.db.ConexionBD;
 
 public class Guerrero extends Personaje {
 
-	public Guerrero(String nombre, int vida, int ataque, int defensa, List<ObjetoConNombre> inventario)
-			throws SQLException {
-		super(nombre, vida, ataque, defensa, inventario);
-		// TODO Auto-generated constructor stub
-	}
-
 	public Guerrero() throws SQLException {
 
 		ObjetoDefensivo malla = new ObjetoDefensivo("Cota de malla");
