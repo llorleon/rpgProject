@@ -54,6 +54,10 @@ public abstract class Personaje extends ObjetoConNombre {
 	public void setInventario(List<ObjetoConNombre> inventario) {
 		this.inventario = inventario;
 	}
+	
+	public void coge(ObjetoConNombre objeto) {
+		inventario.add(objeto);
+	}
 
 	@Override
 	public String toString() {

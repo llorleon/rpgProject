@@ -11,6 +11,7 @@ import dyc.clases.Sesion;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 public class JuegoPanel extends JPanel {
 	private static final long serialVersionUID = -8510474658317474918L;
@@ -54,7 +55,8 @@ public class JuegoPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				sesion.getMapa().avanzaLugar();
-				actualiza();
+				actualizaLugar();
+				actualizaBotones();
 			}
 		});
 		
@@ -65,7 +67,16 @@ public class JuegoPanel extends JPanel {
 		huirButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Random random = new Random();
 				
+				if (random.nextBoolean() == true) {
+					sesion.getMapa().avanzaLugar();
+					actualizaLugar();
+					actualizaBotones();
+				} else {
+					huirButton.setVisible(false);
+					textArea.append("No has podido huir, tienes que luchar\n");
+				}
 			}
 		});
 		
@@ -73,14 +84,27 @@ public class JuegoPanel extends JPanel {
 		recogerButton.setForeground(Color.GREEN);
 		panel.add(recogerButton);
 		
+		recogerButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				textArea.append("Has cogido " + sesion.getMapa().getLugar().getPocion().getNombre() + "\n");
+				sesion.getPersonaje().coge(sesion.getMapa().getLugar().getPocion());
+				sesion.getMapa().getLugar().setPocion(null);
+				actualizaBotones();
+			}
+		});
+		
 		setVisible(true);
 		
-		actualiza();
+		actualizaLugar();
+		actualizaBotones();
 	}
 	
-	public void actualiza() {
+	public void actualizaLugar() {
 		textArea.append(sesion.getMapa().getLugar().toString() + "\n");
-		
+	}
+	
+	public void actualizaBotones() {
 		if (sesion.getMapa().getLugar().getEnemigo() != null) {
 			atacarButton.setVisible(true);
 			huirButton.setVisible(true);
