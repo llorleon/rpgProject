@@ -11,7 +11,7 @@ import dyc.clases.Personaje;
 import dyc.db.ConexionBD;
 
 public class Mago extends Personaje {
-
+	private int maxMana;
 	private int mana;
 	private Hechizo hechizo;
 
@@ -29,7 +29,8 @@ public class Mago extends Personaje {
 			setAtaque(cursor.getInt("ataque"));
 			setVida(cursor.getInt("vida"));
 			setDefensa(cursor.getInt("defensa"));
-			this.mana = cursor.getInt("mana");
+			this.maxMana = cursor.getInt("mana");
+			this.mana = this.maxMana;
 		}
 
 		ResultSet cursor2 = smt.executeQuery("select * from hechizo WHERE nombre ='Bola de Fuego'");
@@ -53,6 +54,14 @@ public class Mago extends Personaje {
 		this.mana = mana;
 	}
 
+	public int getMaxMana() {
+		return maxMana;
+	}
+
+	public void setMaxMana(int maxMana) {
+		this.maxMana = maxMana;
+	}
+
 	public Hechizo getHechizo() {
 		return hechizo;
 	}
@@ -61,6 +70,14 @@ public class Mago extends Personaje {
 		this.hechizo = hechizo;
 	}
 
+	public void recuperaMana(int recupera) {
+		mana += recupera;
+		
+		if (mana > maxMana) {
+			mana = maxMana;
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "Mago\n" + super.toString() + "\nMana: " + mana + "\nHechizo: " + hechizo;

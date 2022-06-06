@@ -16,7 +16,6 @@ import java.util.Random;
 public class JuegoPanel extends JPanel {
 	private static final long serialVersionUID = -8510474658317474918L;
 	
-	private VentanaFrame v;
 	private Sesion sesion;
 	private JTextArea textArea;
 	private JButton atacarButton;
@@ -25,7 +24,6 @@ public class JuegoPanel extends JPanel {
 	private JButton siguienteButton;
 
 	public JuegoPanel(VentanaFrame v, Sesion sesion) {
-		this.v = v;
 		this.sesion = sesion;
 		
 		setBackground(Color.BLACK);
@@ -46,6 +44,13 @@ public class JuegoPanel extends JPanel {
 		atacarButton = new JButton("Atacar");
 		atacarButton.setForeground(Color.GREEN);
 		panel.add(atacarButton);
+		
+		atacarButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				v.cambiaPantalla(new CombatePanel(v, sesion, JuegoPanel.this));
+			}
+		});
 		
         siguienteButton = new JButton("Siguiente");
 		siguienteButton.setForeground(Color.GREEN);

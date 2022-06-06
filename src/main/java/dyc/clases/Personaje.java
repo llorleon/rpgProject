@@ -4,16 +4,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dyc.dao.PocionMana;
+import dyc.dao.PocionVida;
+
 public abstract class Personaje extends ObjetoConNombre {
+	private int maxVida;
 	private int vida;
 	private int ataque;
 	private int defensa;
 	private List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();
 
-	public Personaje(String nombre, int vida, int ataque, int defensa, List<ObjetoConNombre> inventario)
+	public Personaje(String nombre, int maxVida, int ataque, int defensa, List<ObjetoConNombre> inventario)
 			throws SQLException {
 		super(nombre);
-		this.vida = vida;
+		this.maxVida = maxVida;
+		this.vida = maxVida;
 		this.ataque = ataque;
 		this.defensa = defensa;
 		this.inventario = inventario;
@@ -29,6 +34,14 @@ public abstract class Personaje extends ObjetoConNombre {
 
 	public void setVida(int vida) {
 		this.vida = vida;
+	}
+
+	public int getMaxVida() {
+		return maxVida;
+	}
+
+	public void setMaxVida(int maxVida) {
+		this.maxVida = maxVida;
 	}
 
 	public int getAtaque() {
@@ -57,6 +70,74 @@ public abstract class Personaje extends ObjetoConNombre {
 	
 	public void coge(ObjetoConNombre objeto) {
 		inventario.add(objeto);
+	}
+	
+	public int cuantasPocionesMana() {
+		int n = 0;
+		
+		for (int i = 0; i < inventario.size(); i++) {
+			if (inventario.get(i) instanceof PocionMana) {
+				n++;
+			}
+		}
+		
+		return n;
+	}
+	
+	public PocionMana getPocionMana() {
+		PocionMana pocion = null;
+		
+		int i = 0;
+		
+		while ((i < inventario.size()) && !(inventario.get(i) instanceof PocionMana)) {
+			i++;
+		}
+		
+		if (i < inventario.size()) {
+			pocion = (PocionMana) inventario.get(i);
+		}
+		
+		return pocion;
+	}
+	
+	public PocionVida getPocionVida() {
+		PocionVida pocion = null;
+		
+		int i = 0;
+		
+		while ((i < inventario.size()) && !(inventario.get(i) instanceof PocionVida)) {
+			i++;
+		}
+		
+		if (i < inventario.size()) {
+			pocion = (PocionVida) inventario.get(i);
+		}
+		
+		return pocion;
+	}
+	
+	public int cuantasPocionesVida() {
+        int n = 0;
+		
+		for (int i = 0; i < inventario.size(); i++) {
+			if (inventario.get(i) instanceof PocionVida) {
+				n++;
+			}
+		}
+		
+		return n;
+	}
+	
+	public void recuperaVida(int recupera) {
+		vida += recupera;
+		
+		if (vida > maxVida) {
+			vida = maxVida;
+		}
+	}
+	
+	public void quitaObjeto(ObjetoConNombre objeto) {
+		inventario.remove(objeto);
 	}
 
 	@Override

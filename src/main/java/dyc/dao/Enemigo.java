@@ -74,6 +74,10 @@ public class Enemigo {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public void restaVida(int vida) {
+		this.vida -= vida;
+	}
 
 	@Override
 	public String toString() {
