@@ -10,13 +10,11 @@ import dyc.db.ConexionBD;
 public class ObjetoDefensivo extends ObjetoConNombre {
 
 	private byte puntosDefensa;
-	private String defensaObjetoNombre;
 
 	public ObjetoDefensivo(byte puntosDefensa, String defensaObjetoNombre) throws SQLException {
 		super(defensaObjetoNombre);
 
 		this.puntosDefensa = puntosDefensa;
-		this.defensaObjetoNombre = defensaObjetoNombre;
 	}
 
 	public ObjetoDefensivo(String defensaObjetoNombre) throws SQLException {
@@ -28,7 +26,7 @@ public class ObjetoDefensivo extends ObjetoConNombre {
 		if (cursor.next()) {
 
 			this.puntosDefensa = cursor.getByte("puntosDeDefensa");
-			this.defensaObjetoNombre = cursor.getString("nombre");
+			setNombre(cursor.getString("nombre"));
 		}
 
 		// TODO Auto-generated catch block
@@ -44,17 +42,9 @@ public class ObjetoDefensivo extends ObjetoConNombre {
 		this.puntosDefensa = puntosDefensa;
 	}
 
-	public String getDefensaObjetoNombre() {
-		return defensaObjetoNombre;
-	}
-
-	public void setDefensaObjetoNombre(String defensaObjetoNombre) {
-		this.defensaObjetoNombre = defensaObjetoNombre;
-	}
-
 	@Override
 	public String toString() {
-		return "ObjetoDefensivo [Puntos de defensa :" + puntosDefensa + ", Nombre de la armadura : " + defensaObjetoNombre + "]";
+		return super.toString() + " es un objeto defensivo con Defensa: " + puntosDefensa;
 	}
 
 }

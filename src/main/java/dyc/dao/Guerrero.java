@@ -41,8 +41,7 @@ public class Guerrero extends Personaje {
 
 	@Override
 	public String toString() {
-		return "Guerrero [getVida()=" + getVida() + ", getAtaque()=" + getAtaque() + ", getDefensa()=" + getDefensa()
-				+ ", getInventario()=" + getInventario() + ", getNombre()=" + getNombre() + "]";
+		return "Guerrero\n" + super.toString();
 	}
 
 }

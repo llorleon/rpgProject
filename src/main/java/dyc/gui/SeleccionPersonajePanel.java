@@ -21,11 +21,11 @@ import java.sql.SQLException;
 import java.awt.Color;
 import java.awt.Font;
 
-public class SeleccionPersonaje extends JPanel {
+public class SeleccionPersonajePanel extends JPanel {
 
 	private static final long serialVersionUID = -6371461512707126474L;
 
-	public SeleccionPersonaje(Ventana v, Sesion sesion) throws SQLException {
+	public SeleccionPersonajePanel(VentanaFrame v, Sesion sesion) throws SQLException {
 		setBackground(Color.BLACK);
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -59,7 +59,7 @@ public class SeleccionPersonaje extends JPanel {
 					sesion.setPersonaje(mago);
 
 					System.out.println(mago);
-					v.cambiaPantalla(new VentanaJuego(v, sesion));
+					v.cambiaPantalla(new ResumenPanel(v, sesion));
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				} catch (EnemigoException ee) {
@@ -81,7 +81,7 @@ public class SeleccionPersonaje extends JPanel {
 					sesion.setPersonaje(arquero);
 
 					System.out.println(arquero);
-					v.cambiaPantalla(new VentanaJuego(v, sesion));
+					v.cambiaPantalla(new ResumenPanel(v, sesion));
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -102,7 +102,7 @@ public class SeleccionPersonaje extends JPanel {
 					sesion.setPersonaje(guerrero);
 
 					System.out.println(guerrero);
-					v.cambiaPantalla(new VentanaJuego(v, sesion));
+					v.cambiaPantalla(new ResumenPanel(v, sesion));
 
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block

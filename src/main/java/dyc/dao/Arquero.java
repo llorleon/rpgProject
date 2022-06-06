@@ -41,8 +41,7 @@ public class Arquero extends Personaje {
 
 	@Override
 	public String toString() {
-		return "Arquero [getVida()=" + getVida() + ", getAtaque()=" + getAtaque() + ", getDefensa()=" + getDefensa()
-				+ ", getInventario()=" + getInventario() + ", getNombre()=" + getNombre() + "]";
+		return "Arquero\n" + super.toString();
 	}
 
 }

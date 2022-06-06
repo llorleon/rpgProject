@@ -13,13 +13,13 @@ import dyc.db.ConexionBD;
 public class Mago extends Personaje {
 
 	private int mana;
-	private Hechizo hechizos;
+	private Hechizo hechizo;
 
 	public Mago(String nombre, int vida, int ataque, int defensa, List<ObjetoConNombre> inventario, int mana,
-			Hechizo hechizos) throws SQLException {
+			Hechizo hechizo) throws SQLException {
 		super(nombre, vida, ataque, defensa, inventario);
 		this.mana = mana;
-		this.hechizos = hechizos;
+		this.hechizo = hechizo;
 	}
 
 	public Mago() throws SQLException {
@@ -45,7 +45,7 @@ public class Mago extends Personaje {
 
 			Hechizo bolita = new Hechizo(cursor2.getString("nombre"), cursor2.getInt("puntosAtaque"),
 					cursor2.getInt("costeMana"));
-			this.hechizos = bolita;
+			this.hechizo = bolita;
 
 		}
 		ConexionBD.desconectar();
@@ -60,17 +60,17 @@ public class Mago extends Personaje {
 		this.mana = mana;
 	}
 
-	public Hechizo getHechizos() {
-		return hechizos;
+	public Hechizo getHechizo() {
+		return hechizo;
 	}
 
-	public void setHechizos(Hechizo hechizos) {
-		this.hechizos = hechizos;
+	public void setHechizo(Hechizo hechizo) {
+		this.hechizo = hechizo;
 	}
 
 	@Override
 	public String toString() {
-		return "Mago [mana=" + mana + "\n" + hechizos + "\n"+getInventario();
+		return "Mago\n" + super.toString() + "\nMana: " + mana + "\nHechizo: " + hechizo;
 	}
 
 }

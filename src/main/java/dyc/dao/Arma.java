@@ -17,13 +17,11 @@ import dyc.db.ConexionBD;
 public class Arma extends ObjetoConNombre {
 
 	private byte puntosAtaque;
-	private String nombreArma;
 
 	public Arma(byte puntosAtaque, String armaObjetoNombre) throws SQLException {
 		super(armaObjetoNombre);
 
 		this.puntosAtaque = puntosAtaque;
-		this.nombreArma = armaObjetoNombre;
 
 	}
 
@@ -36,7 +34,7 @@ public class Arma extends ObjetoConNombre {
 		if (cursor.next()) {
 
 			this.puntosAtaque = cursor.getByte("puntosDeAtaque");
-			this.nombreArma = cursor.getString("nombre");
+			setNombre(cursor.getString("nombre"));
 		}
 
 		// TODO Auto-generated catch block
@@ -53,13 +51,9 @@ public class Arma extends ObjetoConNombre {
 		this.puntosAtaque = puntosAtaque;
 	}
 
-	public void setArmaObjetoNombre(String armaObjetoNombre) {
-		this.nombreArma = armaObjetoNombre;
-	}
-
 	@Override
 	public String toString() {
-		return "Arma [Puntos de ataque =" + puntosAtaque + ", Nombre del Arma = " + nombreArma + "]";
+		return super.toString() + " es un arma con Ataque: " + puntosAtaque;
 	}
 
 }

@@ -52,15 +52,17 @@ public abstract class Personaje extends ObjetoConNombre {
 	}
 
 	public void setInventario(List<ObjetoConNombre> inventario) {
-		
-		
 		this.inventario = inventario;
 	}
 
 	@Override
 	public String toString() {
-		return "Personaje [vida=" + vida + ", ataque=" + ataque + ", defensa=" + defensa + ", inventario=" + inventario
-				+ "]";
+		String resultado = "Nombre: " + getNombre() + "\nVida: " + vida + "\nAtaque: " + ataque + "\nDefensa: " + defensa + "\nInventario:\n";
+		
+        for (int i = 0; i < inventario.size(); i++) {
+			resultado += inventario.get(i) + "\n";
+		}
+		
+		return resultado;
 	}
-
 }

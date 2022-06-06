@@ -8,11 +8,11 @@ import javax.swing.JPanel;
 
 import dyc.clases.Sesion;
 
-public class Ventana extends JFrame {
+public class VentanaFrame extends JFrame {
 	
 	private static final long serialVersionUID = 7034760431371082687L;
 	
-	public Ventana(Sesion sesion) throws SQLException {
+	public VentanaFrame(Sesion sesion) throws SQLException {
 		setIconImage(new ImageIcon("./logo.png").getImage());
 		setSize(600, 300);
 		setLocationRelativeTo(null);
@@ -20,7 +20,7 @@ public class Ventana extends JFrame {
 		setTitle("Dungeon & Goblins");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		cambiaPantalla(new SeleccionPersonaje(this, sesion));
+		cambiaPantalla(new SeleccionPersonajePanel(this, sesion));
 	}
 	
 	public void cambiaPantalla(JPanel pantalla) {
