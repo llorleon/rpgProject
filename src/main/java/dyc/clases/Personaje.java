@@ -84,7 +84,12 @@ public abstract class Personaje extends ObjetoConNombre {
 	public List<ObjetoConNombre> getInventario() {
 		return inventario;
 	}
-
+/**
+ * Metodo con el que asignamos un objeto al inventario del personaje
+ * 
+ * @param arraylist de inventario al que añadiremos los objetos en cada clase, mago, guerrero, arquero...
+ */
+	
 	public void setInventario(List<ObjetoConNombre> inventario) {
 		this.inventario = inventario;
 	}
