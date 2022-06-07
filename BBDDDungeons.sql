@@ -12,7 +12,7 @@ costeMana INT
 INSERT INTO hechizo VALUES ('Bola de Fuego',10,5);
 INSERT INTO hechizo VALUES ('Descarga de Escarcha',7,3);
 
-SELECT * FROM mago;
+SELECT * FROM hechizo;
 
 
 CREATE TABLE mago(
@@ -63,8 +63,15 @@ defensa INT
 INSERT INTO enemigo VALUES ('Globlin Escavador',20,3,2);
 INSERT INTO enemigo VALUES ('Globlin Mimico',40,1,6);
 INSERT INTO enemigo VALUES ('Globlin Escondido',20,7,1);
-INSERT INTO enemigo VALUES ('Globlin Rastreador',10,7,4);
-
+INSERT INTO enemigo VALUES ('Orco bufon',15,3,5);
+INSERT INTO enemigo VALUES ('Naga Arquero',20,5,2);
+INSERT INTO enemigo VALUES ('Elemental de Tierra',30,2,7);
+INSERT INTO enemigo VALUES ('Diablillo',10,5,2);
+INSERT INTO enemigo VALUES ('Golem de Piedra',18,7,8);
+INSERT INTO enemigo VALUES ('Señor del Foso',28,5,4);
+INSERT INTO enemigo VALUES ('Sucubo',13,6,6);
+INSERT INTO enemigo VALUES ('Zombie Descerebrado',12,3,6);
+INSERT INTO enemigo VALUES ('Elemtal del Vacio',30,4,6);
 
 CREATE TABLE jefeFinal(
 nombre VARCHAR(100) NOT NULL,
@@ -128,6 +135,18 @@ INSERT INTO lugares VALUES ('Templo Oscuro');
 INSERT INTO lugares VALUES ('Camaras Mogu');
 INSERT INTO lugares VALUES ('Solio del Trueno');
 INSERT INTO lugares VALUES ('Fortaleza Orca');
+INSERT INTO lugares VALUES ('Sima Ignea');
+INSERT INTO lugares VALUES ('Cavernas de los lamentos');
+INSERT INTO lugares VALUES ('Monasterio Escarlata');
+INSERT INTO lugares VALUES ('Profundidades Roca Negra');
+INSERT INTO lugares VALUES ('Bancal del Magiste');
+INSERT INTO lugares VALUES ('El Nexo');
+INSERT INTO lugares VALUES ('Forja de Almas');
+INSERT INTO lugares VALUES ('Villa Dorada');
+INSERT INTO lugares VALUES ('Naxxramas');
+INSERT INTO lugares VALUES ('Sagrario Obsidiana');
+INSERT INTO lugares VALUES ('Ulduar');
+INSERT INTO lugares VALUES ('Sagrario Rubí');
 
 
 
