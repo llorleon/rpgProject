@@ -7,6 +7,12 @@ import javax.swing.JOptionPane;
 import dyc.clases.Sesion;
 import dyc.gui.VentanaFrame;
 
+/**
+ * Clase principal, desde donde llamamos a la ventana e iniciamos el juego con Sesion
+ * 
+ * @author victorml
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {

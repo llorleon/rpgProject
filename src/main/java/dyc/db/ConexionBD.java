@@ -5,8 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Clase abstracta que usamos para conectarnos a la BBDD
+ * 
+ * @author victorml
+ *
+ */
+
 public abstract class ConexionBD {
-	//He cambiado la base de datos para que me funcione a mi ya que tengo una contraseña diferente y nombres diferentes
 	private final static String cadenaConexion = "jdbc:mysql://localhost:3306/dungeon";
 	private final static String usuarioBD = "root";
 	private final static String passwordBD = "12345678";

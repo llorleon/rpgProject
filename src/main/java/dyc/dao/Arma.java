@@ -18,6 +18,14 @@ import dyc.exception.ObjetosException;
 public class Arma extends ObjetoConNombre {
 
 	private byte puntosAtaque;
+	
+	/**
+	 * Metodo usado como constructor de Arma para cada personaje, con esto le asignamos una por su Nombre en la bd
+	 * 
+	 * @param armaObjetoNombre paso el objeto de Arma
+	 * @throws SQLException Exception por defecto de SQL
+	 * @throws ObjetosException Exception que saco por falta de objeto en la BBDD
+	 */
 
 	public Arma(String armaObjetoNombre) throws SQLException, ObjetosException {
 		super(armaObjetoNombre);

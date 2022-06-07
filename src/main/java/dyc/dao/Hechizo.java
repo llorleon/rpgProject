@@ -4,11 +4,28 @@ import java.sql.SQLException;
 
 import dyc.clases.ObjetoConNombre;
 
+/**
+ * Clase que usamos como constructor para añadir hechizos al Mago, en este caso,
+ * le añadimos en Mago el hechizo Bola de Fuego con sus stats
+ * 
+ * @author victorml
+ *
+ */
+
 public class Hechizo extends ObjetoConNombre {
 
 	int puntosAtaque;
 	int costeMana;
 
+	/**
+	 * Constructor usado para obtener los datos del Hechizo seleccionado, en este
+	 * caso usamos el nombre como PK en BD
+	 * 
+	 * @param nombre       Nombre del hechizo
+	 * @param puntosAtaque Daño causado del hechizo
+	 * @param costeMana    Coste de Mana del hechizo
+	 * @throws SQLException Exception por defecto con SQL
+	 */
 	public Hechizo(String nombre, int puntosAtaque, int costeMana) throws SQLException {
 		super(nombre);
 		this.puntosAtaque = puntosAtaque;
@@ -33,7 +50,7 @@ public class Hechizo extends ObjetoConNombre {
 
 	@Override
 	public String toString() {
-		return "Hechizo "+getNombre()+" con daño "+puntosAtaque+" coste de mana de: "+costeMana;
+		return "Hechizo " + getNombre() + " con daño " + puntosAtaque + " coste de mana de: " + costeMana;
 	}
 
 }

@@ -12,8 +12,23 @@ import dyc.db.ConexionBD;
 import dyc.exception.ClaseException;
 import dyc.exception.ObjetosException;
 
-public class Guerrero extends Personaje {
+/**
+ * Clase DAO, con esta clase sacamos los datos de la BBDD de esta clase, nombre, ataque, defensa, etc...
+ * 
+ * @author victorml
+ *
+ */
 
+public class Guerrero extends Personaje {
+	/**
+	 * Metodo con el que llamamos al guerrero, con esta en concreto, creariamos un Guerrero que hereda de Personaje
+	 * Sacamos sus datos de la BD
+	 * 
+	 * @throws SQLException Exception por defecto de la BD
+	 * @throws ClaseException Exception por no encontrar la clase insertado en BD
+	 * @throws ObjetosException Exception lanzada por no tener Objetos en la BD
+	 */
+	
 	public Guerrero() throws SQLException, ClaseException, ObjetosException {
 
 		ObjetoDefensivo malla = new ObjetoDefensivo("Cota de malla");

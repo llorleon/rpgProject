@@ -9,12 +9,26 @@ import dyc.clases.ObjetoConNombre;
 import dyc.db.ConexionBD;
 import dyc.exception.EnemigoException;
 
+/**
+ * Clase DAO que extiende de Objeto con nombre y obtenemos los datos de un JefeFinal
+ * 
+ * @author victorml
+ *
+ */
+
 public class JefeFinal extends ObjetoConNombre {
 
 	private String nombre;
 	private int vida;
 	private int ataque;
 	private int defensa;
+	
+	/**
+	 * Metodo para generar y recoger todas las estadisticas del jefe final, en este caso usando su Nombre directo desde BD obtenemos al Jefe
+	 * 
+	 * @throws SQLException
+	 * @throws EnemigoException
+	 */
 
 	public JefeFinal() throws SQLException, EnemigoException {
 		super("Cermuzork, El Goblin Primigenio");
@@ -35,6 +49,13 @@ public class JefeFinal extends ObjetoConNombre {
 
 	}
 
+	/**
+	 * Metodo que nos sirve para generar un enemigo en la ultima casilla del mapa
+	 * 
+	 * @return Devuelve un JefeFinal
+	 * @throws SQLException Exception por defecto de SQL
+	 * @throws EnemigoException Exeption creada al no estar el jefe en BD
+	 */
 	public static JefeFinal generaJefe() throws SQLException, EnemigoException {
 		JefeFinal jefeFinal;
 		Random random = new Random();

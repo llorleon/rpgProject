@@ -2,6 +2,13 @@ package dyc.clases;
 
 import java.sql.SQLException;
 
+/**
+ * Clase usada como superclass para todas las demas clases que tengan un campo String Nombre
+ * 
+ * @author victorml
+ *
+ */
+
 public class ObjetoConNombre {
 	private String nombre;
 

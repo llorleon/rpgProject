@@ -1,11 +1,21 @@
 package dyc.clases;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import dyc.dao.PocionMana;
 import dyc.dao.PocionVida;
+
+
+/**
+ * Superclase que hereda de ObjetoConNombre y que nos sirve de superclass para las distintas clases
+ * En este caso es abstract dado que no sabemos que clase somos
+ * 
+ * @author victorml
+ *
+ */
 
 public abstract class Personaje extends ObjetoConNombre {
 	private int maxVida;
@@ -13,6 +23,17 @@ public abstract class Personaje extends ObjetoConNombre {
 	private int ataque;
 	private int defensa;
 	private List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();
+	
+	/**
+	 * Metodo que nos sirve como constructor principal de un personaje, pero que basicamente solo usaremos para crear las clases
+	 * 
+	 * @param nombre String heredado de ObjetoConNombre con el cual ponemos nombre a la clase
+	 * @param maxVida Con esto limitamos la vida maxima del personaje, para no pasarnos de su vidaMaxima al recuperar Vida
+	 * @param ataque Ataque base del personaje sin tener en cuenta su arma
+	 * @param defensa Defensa basica del personake sin tener en cuenta su objetoDefensivo
+	 * @param inventario List de arraylist, del que obtenemos el arma, objetodefensivo y si tiene pociones en el
+	 * @throws SQLException Error por defecto Lanzado por SQL
+	 */
 
 	public Personaje(String nombre, int maxVida, int ataque, int defensa, List<ObjetoConNombre> inventario)
 			throws SQLException {
@@ -68,9 +89,22 @@ public abstract class Personaje extends ObjetoConNombre {
 		this.inventario = inventario;
 	}
 	
+	/**
+	 * Metodo usado para añadir pociones recogidas al inventario del personaje y que estas se puedan usar
+	 * 
+	 * @param objeto , pasamos por argumento el objeto que vamos a recoger, en este caso pociones
+	 */
+	
 	public void coge(ObjetoConNombre objeto) {
 		inventario.add(objeto);
 	}
+	
+	/**
+	 * Metodo que nos sirve para que podamos saber cuantas pociones tenemos en nuestro inventario, recorremos el inventario con un bucle for
+	 * y de esta manera sabremos cuantas pociones tenemos, en este caso de Mana
+	 * 
+	 * @return nos devuelve la cantidad de pociones de Mana en nuestro inventario
+	 */
 	
 	public int cuantasPocionesMana() {
 		int n = 0;
@@ -83,6 +117,8 @@ public abstract class Personaje extends ObjetoConNombre {
 		
 		return n;
 	}
+	
+	
 	
 	public PocionMana getPocionMana() {
 		PocionMana pocion = null;
@@ -116,6 +152,13 @@ public abstract class Personaje extends ObjetoConNombre {
 		return pocion;
 	}
 	
+	/**
+	 * Metodo que nos sirve para que podamos saber cuantas pociones tenemos en nuestro inventario, recorremos el inventario con un bucle for
+	 * y de esta manera sabremos cuantas pociones tenemos, en este caso de Vida
+	 * 
+	 * @return nos devuelve la cantidad de pociones de Vida en nuestro inventario
+	 */
+	
 	public int cuantasPocionesVida() {
         int n = 0;
 		
@@ -128,6 +171,14 @@ public abstract class Personaje extends ObjetoConNombre {
 		return n;
 	}
 	
+	
+	/**
+	 * Metodo usado para determinar la cantidad de vida recuperada, tenemos en cuenta la cantidad maxima de vida para no escederla,
+	 * en el momento que la excedemos, la igualamos a su vida maxima
+	 * 
+	 * @param recupera vida recuperada
+	 */
+	
 	public void recuperaVida(int recupera) {
 		vida += recupera;
 		
@@ -136,6 +187,11 @@ public abstract class Personaje extends ObjetoConNombre {
 		}
 	}
 	
+	/**
+	 * Metodo usado para eliminar las pociones de nuestro inventario
+	 * 
+	 * @param objeto pasamos por argumento el objeto que usa el personaje en combate
+	 */
 	public void quitaObjeto(ObjetoConNombre objeto) {
 		inventario.remove(objeto);
 	}

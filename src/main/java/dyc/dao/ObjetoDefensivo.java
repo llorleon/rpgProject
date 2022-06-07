@@ -8,9 +8,26 @@ import dyc.clases.ObjetoConNombre;
 import dyc.db.ConexionBD;
 import dyc.exception.ObjetosException;
 
+/**
+ * DAO CREADO PARA GENERAR E INTRODUCIR UN ObjetoDefensivo CON UNOS PUNTOS DE Defensa Y QUE
+ * REFERENCIA A UN OBJETO CON NOMBRE
+ * 
+ * @author victorml
+ *
+ */
+
 public class ObjetoDefensivo extends ObjetoConNombre {
 
 	private byte puntosDefensa;
+	
+	
+	/**
+	 * Metodo usado como constructor de ObjetoDefensivo para cada personaje, con esto le asignamos una por su Nombre en la bd
+	 * 
+	 * @param armaObjetoNombre paso el objeto de ObjetoDefensivo
+	 * @throws SQLException Exception por defecto de SQL
+	 * @throws ObjetosException Exception que saco por falta de objeto en la BBDD
+	 */
 
 	public ObjetoDefensivo(String defensaObjetoNombre) throws SQLException, ObjetosException {
 		super(defensaObjetoNombre);

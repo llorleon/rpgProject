@@ -12,7 +12,23 @@ import dyc.db.ConexionBD;
 import dyc.exception.ClaseException;
 import dyc.exception.ObjetosException;
 
+/**
+ * Clase DAO, con esta clase sacamos los datos de la BBDD de esta clase, nombre, ataque, defensa, etc...
+ * 
+ * @author victorml
+ *
+ */
+
 public class Arquero extends Personaje {
+	
+	/**
+	 * Metodo con el que llamamos al arquero, con esta en concreto, creariamos un Arquero que hereda de Personaje
+	 * Sacamos sus datos de la BD
+	 * 
+	 * @throws SQLException Exception por defecto de la BD
+	 * @throws ClaseException Exception por no encontrar la clase insertado en BD
+	 * @throws ObjetosException Exception lanzada por no tener Objetos en la BD
+	 */
 
 	public Arquero() throws SQLException, ClaseException, ObjetosException {
 

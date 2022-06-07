@@ -12,11 +12,26 @@ import dyc.db.ConexionBD;
 import dyc.exception.ClaseException;
 import dyc.exception.ObjetosException;
 
+/**
+ * Clase DAO, con esta clase sacamos los datos de la BBDD de esta clase, nombre, ataque, defensa, etc...
+ * 
+ * @author victorml
+ *
+ */
 public class Mago extends Personaje {
 	private int maxMana;
 	private int mana;
 	private Hechizo hechizo;
 
+	/**
+	 * En este metodo conseguimos sacar toda la informacion de la BD de la clase Mago en la BD, le asignamos inventario.
+	 * En este metodo tambien asignamos el hechizo al mago, como ataque, en este caso Hechizo bolita, como arma
+	 * 
+	 * @throws SQLException Error lanzada por defecto en SQL
+	 * @throws ClaseException Error lanzado por no existir la clase en la BD
+	 * @throws ObjetosException Error lanzada por no haber objeto en la BD
+	 */
+	
 	public Mago() throws SQLException, ClaseException, ObjetosException {
 		ObjetoDefensivo tunica = new ObjetoDefensivo("Tunica de Mago");
 		List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();
@@ -43,6 +58,8 @@ public class Mago extends Personaje {
 
 			Hechizo bolita = new Hechizo(cursor2.getString("nombre"), cursor2.getInt("puntosAtaque"),
 					cursor2.getInt("costeMana"));
+			
+			
 			this.hechizo = bolita;
 
 		} else {
@@ -76,6 +93,13 @@ public class Mago extends Personaje {
 		this.hechizo = hechizo;
 	}
 
+	/**
+	 * Con este metodo conseguimos definir el maximo del mana, para que cuando vayamos a curarnos el mana 
+	 * no sobrepasemos el mana maximo
+	 * 
+	 * @param recupera
+	 */
+	
 	public void recuperaMana(int recupera) {
 		mana += recupera;
 
