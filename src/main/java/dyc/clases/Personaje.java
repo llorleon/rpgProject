@@ -87,7 +87,7 @@ public abstract class Personaje extends ObjetoConNombre {
 /**
  * Metodo con el que asignamos un objeto al inventario del personaje
  * 
- * @param arraylist de inventario al que añadiremos los objetos en cada clase, mago, guerrero, arquero...
+ * @param inventario de inventario al que añadiremos los objetos en cada clase, mago, guerrero, arquero...
  */
 	
 	public void setInventario(List<ObjetoConNombre> inventario) {
@@ -201,6 +201,11 @@ public abstract class Personaje extends ObjetoConNombre {
 		inventario.remove(objeto);
 	}
 
+	/**
+	 * Con este toString, recorremos las stats del Personaje y ademas añadimos los objetos a su inventario para la impresion por pantalla o 
+	 * JSwing
+	 * 
+	 */
 	@Override
 	public String toString() {
 		String resultado = "Nombre: " + getNombre() + "\nVida: " + vida + "\nAtaque: " + ataque + "\nDefensa: " + defensa + "\nInventario:\n";

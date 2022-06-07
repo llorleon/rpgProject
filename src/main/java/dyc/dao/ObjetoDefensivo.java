@@ -24,7 +24,7 @@ public class ObjetoDefensivo extends ObjetoConNombre {
 	/**
 	 * Metodo usado como constructor de ObjetoDefensivo para cada personaje, con esto le asignamos una por su Nombre en la bd
 	 * 
-	 * @param armaObjetoNombre paso el objeto de ObjetoDefensivo
+	 * @param defensaObjetoNombre paso el objeto de ObjetoDefensivo
 	 * @throws SQLException Exception por defecto de SQL
 	 * @throws ObjetosException Exception que saco por falta de objeto en la BBDD
 	 */
