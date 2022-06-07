@@ -12,7 +12,6 @@ costeMana INT
 INSERT INTO hechizo VALUES ('Bola de Fuego',10,5);
 INSERT INTO hechizo VALUES ('Descarga de Escarcha',7,3);
 
-SELECT * FROM hechizo;
 
 
 CREATE TABLE mago(
