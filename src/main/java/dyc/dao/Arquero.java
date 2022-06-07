@@ -9,10 +9,12 @@ import java.util.List;
 import dyc.clases.ObjetoConNombre;
 import dyc.clases.Personaje;
 import dyc.db.ConexionBD;
+import dyc.exception.ClaseException;
+import dyc.exception.ObjetosException;
 
 public class Arquero extends Personaje {
 
-	public Arquero() throws SQLException {
+	public Arquero() throws SQLException, ClaseException, ObjetosException {
 
 		ObjetoDefensivo cuero = new ObjetoDefensivo("Armadura de Cuero");
 		Arma arco = new Arma("Arco Curvo");
@@ -29,6 +31,8 @@ public class Arquero extends Personaje {
 			setAtaque(cursor.getInt("ataque"));
 			setVida(cursor.getInt("vida"));
 			setDefensa(cursor.getInt("defensa"));
+		} else {
+			throw new ClaseException("La clase no existe en la base de datos.");
 		}
 
 	}

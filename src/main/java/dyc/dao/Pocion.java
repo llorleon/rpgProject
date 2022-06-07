@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Random;
 
 import dyc.clases.ObjetoConNombre;
+import dyc.exception.ObjetosException;
 
 public class Pocion extends ObjetoConNombre {
 	public Pocion() {
@@ -14,7 +15,7 @@ public class Pocion extends ObjetoConNombre {
 		super(nombre);
 	}
 	
-	public static Pocion generaPocion(boolean mana) throws SQLException {
+	public static Pocion generaPocion(boolean mana) throws SQLException, ObjetosException {
 		Pocion pocion;
 		Random random = new Random(); 
 		

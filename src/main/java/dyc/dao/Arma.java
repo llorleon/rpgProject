@@ -6,6 +6,7 @@ import java.sql.Statement;
 
 import dyc.clases.ObjetoConNombre;
 import dyc.db.ConexionBD;
+import dyc.exception.ObjetosException;
 
 /**
  * DAO CREADO PARA GENERAR E INTRODUCIR UN ARMA CON UNOS PUNTOS DE ATAQUE Y QUE
@@ -18,16 +19,17 @@ public class Arma extends ObjetoConNombre {
 
 	private byte puntosAtaque;
 
-	public Arma(String armaObjetoNombre) throws SQLException {
+	public Arma(String armaObjetoNombre) throws SQLException, ObjetosException {
 		super(armaObjetoNombre);
 
 		Statement smt = ConexionBD.conectar();
-		ResultSet cursor = smt.executeQuery(
-				"select * from arma where nombre = '" + armaObjetoNombre + "';");
+		ResultSet cursor = smt.executeQuery("select * from arma where nombre = '" + armaObjetoNombre + "';");
 		if (cursor.next()) {
 
 			this.puntosAtaque = cursor.getByte("puntosDeAtaque");
 			setNombre(cursor.getString("nombre"));
+		} else {
+			throw new ObjetosException("El objeto no existe en la base de datos.");
 		}
 
 		ConexionBD.desconectar();

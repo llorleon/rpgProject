@@ -6,21 +6,24 @@ import java.sql.Statement;
 
 import dyc.clases.ObjetoConNombre;
 import dyc.db.ConexionBD;
+import dyc.exception.ObjetosException;
 
 public class ObjetoDefensivo extends ObjetoConNombre {
 
 	private byte puntosDefensa;
-	
-	public ObjetoDefensivo(String defensaObjetoNombre) throws SQLException {
+
+	public ObjetoDefensivo(String defensaObjetoNombre) throws SQLException, ObjetosException {
 		super(defensaObjetoNombre);
 
 		Statement smt = ConexionBD.conectar();
-		ResultSet cursor = smt.executeQuery(
-				"select * from objetoDefensivo where nombre = '" + defensaObjetoNombre + "';");
+		ResultSet cursor = smt
+				.executeQuery("select * from objetoDefensivo where nombre = '" + defensaObjetoNombre + "';");
 		if (cursor.next()) {
 
 			this.puntosDefensa = cursor.getByte("puntosDeDefensa");
 			setNombre(cursor.getString("nombre"));
+		} else {
+			throw new ObjetosException("El objeto no existe en la base de datos.");
 		}
 
 		// TODO Auto-generated catch block

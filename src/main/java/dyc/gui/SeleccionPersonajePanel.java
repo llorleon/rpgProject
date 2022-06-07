@@ -9,7 +9,9 @@ import dyc.clases.Sesion;
 import dyc.dao.Arquero;
 import dyc.dao.Guerrero;
 import dyc.dao.Mago;
+import dyc.exception.ClaseException;
 import dyc.exception.EnemigoException;
+import dyc.exception.ObjetosException;
 
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
@@ -64,6 +66,14 @@ public class SeleccionPersonajePanel extends JPanel {
 					e1.printStackTrace();
 				} catch (EnemigoException ee) {
 					ee.printStackTrace();
+				} catch (ClaseException e2) {
+					// TODO: handle exception
+					e2.printStackTrace();
+
+				} catch (ObjetosException e3) {
+					// TODO: handle exception
+					e3.printStackTrace();
+
 				}
 
 			}
@@ -87,6 +97,14 @@ public class SeleccionPersonajePanel extends JPanel {
 					e1.printStackTrace();
 				} catch (EnemigoException ee) {
 					ee.printStackTrace();
+				} catch (ClaseException e2) {
+					// TODO: handle exception
+					e2.printStackTrace();
+
+				} catch (ObjetosException e3) {
+					// TODO: handle exception
+					e3.printStackTrace();
+
 				}
 			}
 		});
@@ -109,6 +127,14 @@ public class SeleccionPersonajePanel extends JPanel {
 					e1.printStackTrace();
 				} catch (EnemigoException ee) {
 					ee.printStackTrace();
+				} catch (ClaseException e2) {
+					// TODO: handle exception
+					e2.printStackTrace();
+
+				} catch (ObjetosException e3) {
+					// TODO: handle exception
+					e3.printStackTrace();
+
 				}
 
 			}
