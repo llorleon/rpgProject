@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import dyc.clases.ObjetoConNombre;
@@ -21,7 +22,7 @@ import dyc.exception.ObjetosException;
 public class Mago extends Personaje {
 	private int maxMana;
 	private int mana;
-	private Hechizo hechizo;
+	private HashMap<String, Hechizo> hechizos;
 
 	/**
 	 * En este metodo conseguimos sacar toda la informacion de la BD de la clase Mago en la BD, le asignamos inventario.
@@ -39,6 +40,7 @@ public class Mago extends Personaje {
 		setInventario(inventario);
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery("select * from mago");
+		hechizos = new HashMap<>();
 
 		if (cursor.next()) {
 
@@ -52,19 +54,20 @@ public class Mago extends Personaje {
 			throw new ClaseException("La clase no existe en la base de datos.");
 		}
 
-		ResultSet cursor2 = smt.executeQuery("select * from hechizo WHERE nombre ='Bola de Fuego'");
+		ResultSet cursor2 = smt.executeQuery("select * from hechizo"); 
 
-		if (cursor2.next()) {
-
-			Hechizo bolita = new Hechizo(cursor2.getString("nombre"), cursor2.getInt("puntosAtaque"),
+		while (cursor2.next()) {
+			Hechizo hechizo = new Hechizo(cursor2.getString("nombre"), cursor2.getInt("puntosAtaque"),
 					cursor2.getInt("costeMana"));
 			
 			
-			this.hechizo = bolita;
-
-		} else {
-			throw new ObjetosException("El objeto no existe en la base de datos.");
+			hechizos.put(hechizo.getNombre(), hechizo);
 		}
+		
+		if (hechizos.isEmpty()) {
+			throw new ObjetosException("No hay hechizos en la base de datos.");
+		}
+		
 		ConexionBD.desconectar();
 
 	}
@@ -85,14 +88,6 @@ public class Mago extends Personaje {
 		this.maxMana = maxMana;
 	}
 
-	public Hechizo getHechizo() {
-		return hechizo;
-	}
-
-	public void setHechizo(Hechizo hechizo) {
-		this.hechizo = hechizo;
-	}
-
 	/**
 	 * Con este metodo conseguimos definir el maximo del mana, para que cuando vayamos a curarnos el mana 
 	 * no sobrepasemos el mana maximo
@@ -110,7 +105,13 @@ public class Mago extends Personaje {
 
 	@Override
 	public String toString() {
-		return "Mago\n" + super.toString() + "\nMana: " + mana + "\nHechizo: " + hechizo;
+		String resultado = "Mago\n" + super.toString() + "\nMana: " + mana + "\nHechizos:\n";
+		
+		for (Hechizo hechizo : hechizos.values()) {
+			resultado += hechizo + "\n";
+		}
+		
+		return resultado;
 	}
 
 }
