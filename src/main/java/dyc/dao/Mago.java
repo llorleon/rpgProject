@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import dyc.clases.ObjetoConNombre;
 import dyc.clases.Personaje;
@@ -47,6 +48,7 @@ public class Mago extends Personaje {
 			setNombre(cursor.getString("nombre"));
 			setAtaque(cursor.getInt("ataque"));
 			setVida(cursor.getInt("vida"));
+			setMaxVida(getVida());
 			setDefensa(cursor.getInt("defensa"));
 			this.maxMana = cursor.getInt("mana");
 			this.mana = this.maxMana;
@@ -113,5 +115,16 @@ public class Mago extends Personaje {
 		
 		return resultado;
 	}
+	
+	public Set<String> getHechizos() {
+		return hechizos.keySet();
+	}
+	
+	public Hechizo getHechizo(String nombre) {
+		return hechizos.get(nombre);
+	}
 
+	public void consumeMana(int mana) {
+		this.mana -= mana;
+	}
 }

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dyc.dao.Arma;
 import dyc.dao.PocionMana;
 import dyc.dao.PocionVida;
 
@@ -215,5 +216,17 @@ public abstract class Personaje extends ObjetoConNombre {
 		}
 		
 		return resultado;
+	}
+	
+	public Arma getArma() {
+		Arma arma = null;
+		
+		for (int i = 0; i < inventario.size(); i++) {
+			if (inventario.get(i) instanceof Arma) {
+				arma = (Arma) inventario.get(i); 
+			}
+		}
+		
+		return arma;
 	}
 }

@@ -45,6 +45,7 @@ public class Guerrero extends Personaje {
 			setNombre(cursor.getString("nombre"));
 			setAtaque(cursor.getInt("ataque"));
 			setVida(cursor.getInt("vida"));
+			setMaxVida(getVida());
 			setDefensa(cursor.getInt("defensa"));
 		} else {
 			throw new ClaseException("La clase no existe en la base de datos.");
