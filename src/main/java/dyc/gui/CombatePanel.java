@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
+import javax.swing.JScrollPane;
 
 public class CombatePanel extends JPanel {
 	private static final long serialVersionUID = -2126587181153509748L;
@@ -49,10 +50,13 @@ public class CombatePanel extends JPanel {
 	private boolean enemigoDerrotado;
 	private JButton salirButton;
 	private JButton continuarButton;
+	private JScrollPane scrollPane;
+	private JuegoPanel juego;
 	
 	public CombatePanel(VentanaFrame v, Sesion sesion, JuegoPanel juego) {
 		this.sesion = sesion;
 		
+		this.juego = juego;
 		gameOver = false;
 		enemigoDerrotado = false;
 		
@@ -107,11 +111,6 @@ public class CombatePanel extends JPanel {
 		label = new JLabel("New label");
 		panel_1.add(label);
 		
-		textArea = new JTextArea();
-		textArea.setForeground(Color.GREEN);
-		textArea.setBackground(Color.BLACK);
-		add(textArea, BorderLayout.CENTER);
-		
 		panel_2 = new JPanel();
 		panel_2.setBackground(Color.BLACK);
 		panel.add(panel_2);
@@ -123,12 +122,13 @@ public class CombatePanel extends JPanel {
 		atacarButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int danno = random.nextInt(personaje.getAtaque() + personaje.getArma().getPuntosAtaque());
+				int danno = random.nextInt(personaje.getAtaque() + personaje.getArma().getPuntosAtaque() + 1);
 				
 				enemigo.restaVida(danno);
 				enemigoBar.setValue(enemigo.getVida());
 				
 				textArea.append("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
+				juego.logAppend("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
 				
 				enemigoAtaca();
 			}
@@ -144,16 +144,22 @@ public class CombatePanel extends JPanel {
 				Mago mago = (Mago) personaje;
 				Random random = new Random();
 				Hechizo hechizo = mago.getHechizo(hechizo1Button.getText());
-				int danno = random.nextInt(hechizo.getPuntosAtaque());
 				
-				mago.consumeMana(hechizo.getCosteMana());
-				enemigo.restaVida(danno);
-				enemigoBar.setValue(enemigo.getVida());
-				manaBar.setValue(mago.getMana());
-				
-				textArea.append("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
-				
-				enemigoAtaca();
+				if (mago.getMana() >= hechizo.getCosteMana()) {
+					int danno = random.nextInt(hechizo.getPuntosAtaque() + 1);
+					
+					mago.consumeMana(hechizo.getCosteMana());
+					enemigo.restaVida(danno);
+					enemigoBar.setValue(enemigo.getVida());
+					manaBar.setValue(mago.getMana());
+					
+					textArea.append("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
+					juego.logAppend("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
+					
+					enemigoAtaca();
+				} else if (mago.getPocionMana() == null) {
+					enemigoAtaca();
+				}
 			}
 		});
 		
@@ -167,16 +173,22 @@ public class CombatePanel extends JPanel {
 				Mago mago = (Mago) personaje;
 				Random random = new Random();
 				Hechizo hechizo = mago.getHechizo(hechizo2Button.getText());
-				int danno = random.nextInt(hechizo.getPuntosAtaque());
 				
-				mago.consumeMana(hechizo.getCosteMana());
-				enemigo.restaVida(danno);
-				enemigoBar.setValue(enemigo.getVida());
-				manaBar.setValue(mago.getMana());
-				
-				textArea.append("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
-				
-				enemigoAtaca();
+				if (mago.getMana() >= hechizo.getCosteMana()) {
+					int danno = random.nextInt(hechizo.getPuntosAtaque() + 1);
+					
+					mago.consumeMana(hechizo.getCosteMana());
+					enemigo.restaVida(danno);
+					enemigoBar.setValue(enemigo.getVida());
+					manaBar.setValue(mago.getMana());
+					
+					textArea.append("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
+					juego.logAppend("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
+					
+					enemigoAtaca();
+				} else if (mago.getPocionMana() == null) {
+					enemigoAtaca();
+				}
 			}
 		});
 		
@@ -193,7 +205,9 @@ public class CombatePanel extends JPanel {
 				int recupera = pocion.getVidaRecuperada();
 				
 				textArea.append("Te bebes " + pocion.getNombre() + " y recuperas " + recupera + " vida\n");
+				juego.logAppend("Te bebes " + pocion.getNombre() + " y recuperas " + recupera + " vida\n");
 				personaje.recuperaVida(recupera);
+				personajeBar.setValue(personaje.getVida());
 				personaje.quitaObjeto(pocion);
 				actualizaBotones();
 				
@@ -202,17 +216,21 @@ public class CombatePanel extends JPanel {
 		});
 		
 		continuarButton = new JButton("Continuar");
+		continuarButton.setBackground(Color.BLACK);
+		continuarButton.setForeground(Color.GREEN);
 		panel_2.add(continuarButton);
 		
 		continuarButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//xxx
-				//v.cambiaPantalla(new CombatePanel(v, sesion, JuegoPanel.this));
+				juego.actualizaBotones();
+				v.cambiaPantalla(juego);
 			}
 		});
 		
 		salirButton = new JButton("Salir");
+		salirButton.setBackground(Color.BLACK);
+		salirButton.setForeground(Color.GREEN);
 		panel_2.add(salirButton);
 		
 		salirButton.addMouseListener(new MouseAdapter() {
@@ -226,11 +244,14 @@ public class CombatePanel extends JPanel {
 		pocionManaButton.setForeground(Color.GREEN);
 		panel_2.add(pocionManaButton);
 		
+		scrollPane = new JScrollPane();
+		add(scrollPane, BorderLayout.CENTER);
+		
 		
 		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
 		textArea.setForeground(Color.GREEN);
 		textArea.setBackground(Color.BLACK);
-		add(textArea, BorderLayout.CENTER);
 		
 		pocionManaButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -240,7 +261,10 @@ public class CombatePanel extends JPanel {
 				int recupera = pocion.getManaRecuperada();
 				
 				textArea.append("Te bebes " + pocion.getNombre() + " y recuperas " + recupera + " maná\n");
+				juego.logAppend("Te bebes " + pocion.getNombre() + " y recuperas " + recupera + " maná\n");
+				
 				personaje.recuperaMana(recupera);
+				manaBar.setValue(personaje.getMana());
 				personaje.quitaObjeto(pocion);
 				actualizaBotones();
 				
@@ -253,20 +277,25 @@ public class CombatePanel extends JPanel {
 	
 	public void enemigoAtaca() {
 		if (enemigo.estaVivo()) {
-			int danno = random.nextInt(enemigo.getAtaque());
+			int danno = random.nextInt(enemigo.getAtaque() + 1);
 			
 			personaje.restaVida(danno);
 			personajeBar.setValue(personaje.getVida());
 			
 			textArea.append(enemigo.getNombre() + " hizo " + danno + " puntos de daño\n");
+			juego.logAppend(enemigo.getNombre() + " hizo " + danno + " puntos de daño\n");
 		    
 		    if (!personaje.estaVivo()) {
 		    	textArea.append("Has sido derrotado por " + enemigo.getNombre() + "\n");
+		    	juego.logAppend("Has sido derrotado por " + enemigo.getNombre() + "\n");
 		    	gameOver = true;
+		    	actualizaBotones();
 		    }
 		} else {
 			textArea.append(enemigo.getNombre() + " ha sido derrotado\n");
+			juego.logAppend(enemigo.getNombre() + " ha sido derrotado\n");
 			enemigoDerrotado = true;
+			actualizaBotones();
 		}
 	}
 

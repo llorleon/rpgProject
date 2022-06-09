@@ -79,4 +79,8 @@ public class Lugar extends ObjetoConNombre {
 
 		return texto;
 	}
+	
+	public void setUltimoLugar() throws EnemigoException, SQLException {
+		enemigo = new JefeFinal();
+	}
 }

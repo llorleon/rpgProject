@@ -34,6 +34,10 @@ public class Mapa {
 		for (int i = 0; i < lugares.length; i++) {
 			for (int j = 0; j < lugares[i].length; j++) {
 				lugares[i][j] = new Lugar(personaje);
+				
+				if (i== lugares.length - 1 && j == lugares[i].length - 1) {
+					lugares[i][j].setUltimoLugar();
+				}
 			}
 		}
 
@@ -61,5 +65,9 @@ public class Mapa {
 	@Override
 	public String toString() {
 		return "Estas en la zona " + getLugar().getNombre();
+	}
+	
+	public boolean juegoTerminado() {
+		return lugar == (lugares.length * lugares[0].length);
 	}
 }

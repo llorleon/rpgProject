@@ -8,10 +8,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import dyc.clases.Sesion;
+import dyc.dao.Enemigo;
+import dyc.dao.Lugar;
+
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
+import javax.swing.JScrollPane;
 
 public class JuegoPanel extends JPanel {
 	private static final long serialVersionUID = -8510474658317474918L;
@@ -22,19 +28,14 @@ public class JuegoPanel extends JPanel {
 	private JButton huirButton;
 	private JButton recogerButton;
 	private JButton siguienteButton;
+	private JScrollPane scrollPane;
+	private JButton salirButton;
 
 	public JuegoPanel(VentanaFrame v, Sesion sesion) {
 		this.sesion = sesion;
 		
 		setBackground(Color.BLACK);
 		setLayout(new BorderLayout(0, 0));
-		
-		textArea = new JTextArea();
-		textArea.setEditable(false);
-		textArea.setForeground(Color.GREEN);
-		textArea.setBackground(Color.BLACK);
-		textArea.setLineWrap(true);
-		add(textArea, BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
@@ -89,6 +90,28 @@ public class JuegoPanel extends JPanel {
 		recogerButton.setForeground(Color.GREEN);
 		panel.add(recogerButton);
 		
+		salirButton = new JButton("Salir");
+		salirButton.setBackground(Color.BLACK);
+		salirButton.setForeground(Color.GREEN);
+		panel.add(salirButton);
+		
+		salirButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
+		
+		scrollPane = new JScrollPane();
+		add(scrollPane, BorderLayout.CENTER);
+		
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		textArea.setEditable(false);
+		textArea.setForeground(Color.GREEN);
+		textArea.setBackground(Color.BLACK);
+		textArea.setLineWrap(true);
+		
 		recogerButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -106,26 +129,52 @@ public class JuegoPanel extends JPanel {
 	}
 	
 	public void actualizaLugar() {
-		textArea.append(sesion.getMapa().getLugar().toString() + "\n");
+		if (!sesion.getMapa().juegoTerminado()) {
+		    textArea.append(sesion.getMapa().getLugar().toString() + "\n");
+		} else {
+			textArea.append("Has terminado el juego!\n");
+		}
 	}
 	
 	public void actualizaBotones() {
-		if (sesion.getMapa().getLugar().getEnemigo() != null) {
-			atacarButton.setVisible(true);
-			huirButton.setVisible(true);
-			recogerButton.setVisible(false);
-			siguienteButton.setVisible(false);
-		} else if (sesion.getMapa().getLugar().getPocion() != null) {
-			atacarButton.setVisible(false);
-			huirButton.setVisible(false);
-			recogerButton.setVisible(true);
-			siguienteButton.setVisible(true);
+		if (!sesion.getMapa().juegoTerminado()) {
+			salirButton.setVisible(false);
+			
+			Lugar lugar = sesion.getMapa().getLugar();
+			Enemigo enemigo = lugar.getEnemigo();
+			
+			if (enemigo != null && enemigo.estaVivo()) {
+				atacarButton.setVisible(true);
+				huirButton.setVisible(true);
+				recogerButton.setVisible(false);
+				siguienteButton.setVisible(false);
+			} else if (lugar.getPocion() != null) {
+				atacarButton.setVisible(false);
+				huirButton.setVisible(false);
+				recogerButton.setVisible(true);
+				siguienteButton.setVisible(true);
+			} else {
+				atacarButton.setVisible(false);
+				huirButton.setVisible(false);
+				recogerButton.setVisible(false);
+				siguienteButton.setVisible(true);
+			}
 		} else {
 			atacarButton.setVisible(false);
 			huirButton.setVisible(false);
 			recogerButton.setVisible(false);
-			siguienteButton.setVisible(true);
+			siguienteButton.setVisible(false);
+			salirButton.setVisible(true);
 		}
 	}
-
+	
+	public void logAppend(String linea) {
+		try {
+			FileWriter fw = new FileWriter("log.txt", true);
+			fw.write(linea);
+			fw.close();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
 }
