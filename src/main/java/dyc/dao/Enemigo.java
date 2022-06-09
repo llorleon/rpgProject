@@ -107,5 +107,9 @@ public class Enemigo {
 	public String toString() {
 		return nombre + " con salud de: " + vida + " Ataque: " + ataque + " Defensa: " + defensa;
 	}
+	
+	public boolean estaVivo() {
+		return vida > 0; 
+	}
 
 }

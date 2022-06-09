@@ -43,9 +43,20 @@ public class CombatePanel extends JPanel {
 	private JPanel panel_3;
 	private JProgressBar personajeBar;
 	private JProgressBar manaBar;
-
+	private Enemigo enemigo;
+	private Random random;
+	private boolean gameOver;
+	private boolean enemigoDerrotado;
+	private JButton salirButton;
+	private JButton continuarButton;
+	
 	public CombatePanel(VentanaFrame v, Sesion sesion, JuegoPanel juego) {
 		this.sesion = sesion;
+		
+		gameOver = false;
+		enemigoDerrotado = false;
+		
+		random = new Random();
 		
 		personaje = sesion.getPersonaje();
 		
@@ -64,7 +75,7 @@ public class CombatePanel extends JPanel {
 		enemigoBar = new JProgressBar();
 		panel_1.add(enemigoBar);
 		
-		Enemigo enemigo = sesion.getMapa().getLugar().getEnemigo();
+		enemigo = sesion.getMapa().getLugar().getEnemigo();
 		enemigoLabel.setText(enemigo.getNombre());
 		enemigoBar.setMaximum(enemigo.getVida());
 		enemigoBar.setValue(enemigo.getVida());
@@ -112,11 +123,14 @@ public class CombatePanel extends JPanel {
 		atacarButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Random random = new Random();
 				int danno = random.nextInt(personaje.getAtaque() + personaje.getArma().getPuntosAtaque());
 				
 				enemigo.restaVida(danno);
 				enemigoBar.setValue(enemigo.getVida());
+				
+				textArea.append("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
+				
+				enemigoAtaca();
 			}
 		});
 		
@@ -136,6 +150,10 @@ public class CombatePanel extends JPanel {
 				enemigo.restaVida(danno);
 				enemigoBar.setValue(enemigo.getVida());
 				manaBar.setValue(mago.getMana());
+				
+				textArea.append("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
+				
+				enemigoAtaca();
 			}
 		});
 		
@@ -155,6 +173,10 @@ public class CombatePanel extends JPanel {
 				enemigo.restaVida(danno);
 				enemigoBar.setValue(enemigo.getVida());
 				manaBar.setValue(mago.getMana());
+				
+				textArea.append("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
+				
+				enemigoAtaca();
 			}
 		});
 		
@@ -174,12 +196,41 @@ public class CombatePanel extends JPanel {
 				personaje.recuperaVida(recupera);
 				personaje.quitaObjeto(pocion);
 				actualizaBotones();
+				
+				enemigoAtaca();
+			}
+		});
+		
+		continuarButton = new JButton("Continuar");
+		panel_2.add(continuarButton);
+		
+		continuarButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//xxx
+				//v.cambiaPantalla(new CombatePanel(v, sesion, JuegoPanel.this));
+			}
+		});
+		
+		salirButton = new JButton("Salir");
+		panel_2.add(salirButton);
+		
+		salirButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
 			}
 		});
 		
 		pocionManaButton = new JButton("Poción maná");
 		pocionManaButton.setForeground(Color.GREEN);
 		panel_2.add(pocionManaButton);
+		
+		
+		textArea = new JTextArea();
+		textArea.setForeground(Color.GREEN);
+		textArea.setBackground(Color.BLACK);
+		add(textArea, BorderLayout.CENTER);
 		
 		pocionManaButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -192,50 +243,93 @@ public class CombatePanel extends JPanel {
 				personaje.recuperaMana(recupera);
 				personaje.quitaObjeto(pocion);
 				actualizaBotones();
+				
+				enemigoAtaca();
 			}
 		});
 
 		actualizaBotones();
 	}
+	
+	public void enemigoAtaca() {
+		if (enemigo.estaVivo()) {
+			int danno = random.nextInt(enemigo.getAtaque());
+			
+			personaje.restaVida(danno);
+			personajeBar.setValue(personaje.getVida());
+			
+			textArea.append(enemigo.getNombre() + " hizo " + danno + " puntos de daño\n");
+		    
+		    if (!personaje.estaVivo()) {
+		    	textArea.append("Has sido derrotado por " + enemigo.getNombre() + "\n");
+		    	gameOver = true;
+		    }
+		} else {
+			textArea.append(enemigo.getNombre() + " ha sido derrotado\n");
+			enemigoDerrotado = true;
+		}
+	}
 
 	public void actualizaBotones() {
 		int nPociones = personaje.cuantasPocionesMana();
-
-		if (personaje instanceof Mago) {
-			Mago mago = (Mago) personaje;
-			
-			manaBar.setVisible(true);
-			
-			atacarButton.setVisible(false);
-			
-			hechizo1Button.setVisible(true);
-			hechizo2Button.setVisible(true);
-			
-			Object[] hechizos = mago.getHechizos().toArray();
-			
-			hechizo1Button.setText(hechizos[0].toString());
-			hechizo2Button.setText(hechizos[1].toString());
-			
-			if (nPociones > 0) {
-				pocionManaButton.setText("Poción maná x" + nPociones);
-				pocionManaButton.setVisible(true);
-			} else {
-				pocionManaButton.setVisible(false);
-			}
-		} else {
-			manaBar.setVisible(false);
-			atacarButton.setVisible(true);
-			pocionManaButton.setVisible(false);
+		
+		if (gameOver) {
+            atacarButton.setVisible(false);
 			hechizo1Button.setVisible(false);
 			hechizo2Button.setVisible(false);
-		}
-
-
-		if (nPociones > 0) {
-			pocionVidaButton.setText("Poción vida x" + nPociones);
-			pocionVidaButton.setVisible(true);
-		} else {
 			pocionVidaButton.setVisible(false);
+			pocionManaButton.setVisible(false);
+			continuarButton.setVisible(false);
+			salirButton.setVisible(true);
+		} else if (enemigoDerrotado) {
+			atacarButton.setVisible(false);
+			hechizo1Button.setVisible(false);
+			hechizo2Button.setVisible(false);
+			pocionVidaButton.setVisible(false);
+			pocionManaButton.setVisible(false);
+			continuarButton.setVisible(true);
+			salirButton.setVisible(false);
+		} else {
+			continuarButton.setVisible(false);
+			salirButton.setVisible(false);
+			
+			if (personaje instanceof Mago) {
+				Mago mago = (Mago) personaje;
+				
+				manaBar.setVisible(true);
+				
+				atacarButton.setVisible(false);
+				
+				hechizo1Button.setVisible(true);
+				hechizo2Button.setVisible(true);
+				
+				Object[] hechizos = mago.getHechizos().toArray();
+				
+				hechizo1Button.setText(hechizos[0].toString());
+				hechizo2Button.setText(hechizos[1].toString());
+				
+				if (nPociones > 0) {
+					pocionManaButton.setText("Poción maná x" + nPociones);
+					pocionManaButton.setVisible(true);
+				} else {
+					pocionManaButton.setVisible(false);
+				}
+			} else {
+				manaBar.setVisible(false);
+				atacarButton.setVisible(true);
+				pocionManaButton.setVisible(false);
+				hechizo1Button.setVisible(false);
+				hechizo2Button.setVisible(false);
+			}
+	
+			nPociones = sesion.getPersonaje().cuantasPocionesVida();
+			
+			if (nPociones > 0) {
+				pocionVidaButton.setText("Poción vida x" + nPociones);
+				pocionVidaButton.setVisible(true);
+			} else {
+				pocionVidaButton.setVisible(false);
+			}
 		}
 	}
 }

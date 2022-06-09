@@ -229,4 +229,12 @@ public abstract class Personaje extends ObjetoConNombre {
 		
 		return arma;
 	}
+	
+	public boolean estaVivo() {
+		return vida > 0;
+	}
+	
+	public void restaVida(int vida) {
+		this.vida -= vida;
+	}
 }
