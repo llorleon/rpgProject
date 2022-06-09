@@ -1,0 +1,58 @@
+Llegas a Cenec
+Llegas a Sagrario Rubí y te encuentras Frasco Estus, pocion de vida que recupera 15
+Has cogido Frasco Estus
+Llegas a Villa Dorada y te encuentras un Sucubo con salud de: 13 Ataque: 6 Defensa: 6
+Llegas a Monasterio Escarlata y te encuentras un Sucubo con salud de: 13 Ataque: 6 Defensa: 6 que tiene Frasco Estus, pocion de vida que recupera 15
+Le haces 6 puntos de daño a Sucubo
+Sucubo hizo 3 puntos de daño
+Le haces 5 puntos de daño a Sucubo
+Sucubo hizo 4 puntos de daño
+Le haces 11 puntos de daño a Sucubo
+Sucubo ha sido derrotado
+Llegas a Crisol de los Goblins y te encuentras un Golem de Piedra con salud de: 18 Ataque: 7 Defensa: 8
+Le haces 2 puntos de daño a Golem de Piedra
+Golem de Piedra hizo 0 puntos de daño
+Le haces 0 puntos de daño a Golem de Piedra
+Golem de Piedra hizo 6 puntos de daño
+Le haces 4 puntos de daño a Golem de Piedra
+Golem de Piedra hizo 6 puntos de daño
+Le haces 4 puntos de daño a Golem de Piedra
+Golem de Piedra hizo 2 puntos de daño
+Le haces 9 puntos de daño a Golem de Piedra
+Golem de Piedra ha sido derrotado
+Llegas a Bancal del Magiste y te encuentras Frasco Estus, pocion de vida que recupera 15
+Llegas a Fortaleza Orca
+Llegas a Forja de Almas y te encuentras un Globlin Mimico con salud de: 40 Ataque: 1 Defensa: 6
+Llegas a Forja de Almas y te encuentras un Cermuzork, El Goblin Primigenio con salud de: 80 Ataque: 5 Defensa: 7 que tiene Frasco Estus, pocion de vida que recupera 15
+Le haces 2 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 3 puntos de daño
+Le haces 6 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 1 puntos de daño
+Le haces 0 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 1 puntos de daño
+Le haces 3 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 5 puntos de daño
+Te bebes Frasco Estus y recuperas 15 vida
+Cermuzork, El Goblin Primigenio hizo 4 puntos de daño
+Le haces 12 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 4 puntos de daño
+Le haces 3 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 0 puntos de daño
+Le haces 13 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 5 puntos de daño
+Le haces 4 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 0 puntos de daño
+Le haces 6 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 0 puntos de daño
+Le haces 4 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 4 puntos de daño
+Le haces 2 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 2 puntos de daño
+Le haces 5 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 4 puntos de daño
+Le haces 12 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio hizo 5 puntos de daño
+Le haces 14 puntos de daño a Cermuzork, El Goblin Primigenio
+Cermuzork, El Goblin Primigenio ha sido derrotado
+Has cogido Frasco Estus
+Has terminado el juego!

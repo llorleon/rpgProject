@@ -13,6 +13,8 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JTextArea;
 import javax.swing.JButton;
@@ -22,6 +24,13 @@ public class ResumenPanel extends JPanel {
 	private static final long serialVersionUID = 4094030091183746399L;
 
 	public ResumenPanel(VentanaFrame v, Sesion sesion) {
+		try {
+			FileWriter fw = new FileWriter("log.txt");
+			fw.close();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		
 		setBackground(Color.BLACK);
 		setLayout(new BorderLayout(0, 0));
 		JLabel lblHasElegidoLa = new JLabel("Has elegido la clase:");

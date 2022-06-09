@@ -1,7 +1,5 @@
 package dyc;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
@@ -29,9 +27,6 @@ public class Main {
 		Sesion sesion;
 
 		try {
-			FileWriter fw = new FileWriter("log.txt");
-			fw.close();
-			
 			sesion = new Sesion(); 
 			v = new VentanaFrame(sesion);
 			
@@ -64,9 +59,6 @@ public class Main {
 		} catch (EnemigoException ee) {
 			JOptionPane.showMessageDialog(null, ee.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			ee.printStackTrace();
-		} catch (IOException ioe) {
-			JOptionPane.showMessageDialog(null, ioe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-			ioe.printStackTrace();
 		}
 
 	}

@@ -139,6 +139,22 @@ public class SeleccionPersonajePanel extends JPanel {
 
 			}
 		});
+		
+		JButton ultimoLogButton = new JButton("Log última partida");
+		ultimoLogButton.setForeground(Color.GREEN);
+		ultimoLogButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				v.cambiaPantalla(new LogPanel(v, SeleccionPersonajePanel.this));
+			}
+		});
+		
+		
+		GridBagConstraints gbc_ultimoLogButton = new GridBagConstraints();
+		gbc_ultimoLogButton.insets = new Insets(0, 0, 5, 0);
+		gbc_ultimoLogButton.gridx = 2;
+		gbc_ultimoLogButton.gridy = 5;
+		add(ultimoLogButton, gbc_ultimoLogButton);
 		GridBagConstraints gbc_guerrero_1 = new GridBagConstraints();
 		gbc_guerrero_1.insets = new Insets(0, 0, 5, 0);
 		gbc_guerrero_1.gridx = 2;

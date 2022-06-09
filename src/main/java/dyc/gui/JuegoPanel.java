@@ -82,6 +82,7 @@ public class JuegoPanel extends JPanel {
 				} else {
 					huirButton.setVisible(false);
 					textArea.append("No has podido huir, tienes que luchar\n");
+					logAppend("No has podido huir, tienes que luchar\n");
 				}
 			}
 		});
@@ -116,6 +117,7 @@ public class JuegoPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				textArea.append("Has cogido " + sesion.getMapa().getLugar().getPocion().getNombre() + "\n");
+				logAppend("Has cogido " + sesion.getMapa().getLugar().getPocion().getNombre() + "\n");
 				sesion.getPersonaje().coge(sesion.getMapa().getLugar().getPocion());
 				sesion.getMapa().getLugar().setPocion(null);
 				actualizaBotones();
@@ -131,8 +133,10 @@ public class JuegoPanel extends JPanel {
 	public void actualizaLugar() {
 		if (!sesion.getMapa().juegoTerminado()) {
 		    textArea.append(sesion.getMapa().getLugar().toString() + "\n");
+		    logAppend(sesion.getMapa().getLugar().toString() + "\n");
 		} else {
 			textArea.append("Has terminado el juego!\n");
+			logAppend("Has terminado el juego!\n");
 		}
 	}
 	
