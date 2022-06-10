@@ -33,6 +33,7 @@ public class Mago extends Personaje {
 	 * Coleccion de hechizos que puede lanzar 
 	 */
 	private HashMap<String, Hechizo> hechizos;
+	
 
 	/**
 	 * En este metodo conseguimos sacar toda la informacion de la BD de la clase Mago en la BD, le asignamos inventario.
@@ -47,10 +48,13 @@ public class Mago extends Personaje {
 		/**
 		 * Asignamos el objetodefensivo, creandole un objeto defensivo a partir de la PK que es el nombre
 		 */
+		
+		PocionMana pocionMana = new PocionMana();
+		
 		ObjetoDefensivo tunica = new ObjetoDefensivo("Tunica de Mago");
 		List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();
 		inventario.add(tunica);
-		inventario.add(PocionMana.generaPocion(true));
+		inventario.add(pocionMana);
 		/**
 		 * Añadimos a la coleccion el objeto defensivo
 		 */

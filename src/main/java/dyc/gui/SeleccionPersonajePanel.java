@@ -41,11 +41,10 @@ public class SeleccionPersonajePanel extends JPanel {
 		titulo.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		titulo.setForeground(Color.GREEN);
 		titulo.setBackground(Color.BLACK);
-		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		titulo.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_titulo = new GridBagConstraints();
 		gbc_titulo.insets = new Insets(0, 0, 5, 0);
 		gbc_titulo.anchor = GridBagConstraints.NORTH;
-		gbc_titulo.fill = GridBagConstraints.HORIZONTAL;
 		gbc_titulo.gridx = 2;
 		gbc_titulo.gridy = 2;
 		add(titulo, gbc_titulo);
@@ -153,6 +152,7 @@ public class SeleccionPersonajePanel extends JPanel {
 		 * Boton para que nos lleve a al Panel de ver el log de la partida
 		 */
 		JButton ultimoLogButton = new JButton("Log última partida");
+		ultimoLogButton.setBackground(Color.GRAY);
 		ultimoLogButton.setForeground(Color.GREEN);
 		ultimoLogButton.addMouseListener(new MouseAdapter() {
 			@Override

@@ -19,7 +19,7 @@ public class VentanaFrame extends JFrame {
 	
 	public VentanaFrame(Sesion sesion) throws SQLException {
 		setIconImage(new ImageIcon("./logo.png").getImage());
-		setSize(600, 300);
+		setSize(800, 300);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setTitle("Dungeon & Goblins");
