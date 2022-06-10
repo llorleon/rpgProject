@@ -18,6 +18,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 import javax.swing.JScrollPane;
+import java.awt.Font;
 
 public class JuegoPanel extends JPanel {
 	private static final long serialVersionUID = -8510474658317474918L;
@@ -43,6 +44,8 @@ public class JuegoPanel extends JPanel {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		atacarButton = new JButton("Atacar");
+		atacarButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
+		atacarButton.setBackground(Color.GRAY);
 		atacarButton.setForeground(Color.GREEN);
 		panel.add(atacarButton);
 		
@@ -57,6 +60,8 @@ public class JuegoPanel extends JPanel {
 		});
 		
         siguienteButton = new JButton("Siguiente");
+        siguienteButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
+        siguienteButton.setBackground(Color.GRAY);
 		siguienteButton.setForeground(Color.GREEN);
 		panel.add(siguienteButton);
 		
@@ -73,6 +78,8 @@ public class JuegoPanel extends JPanel {
 		});
 		
 		huirButton = new JButton("Huir");
+		huirButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
+		huirButton.setBackground(Color.GRAY);
 		huirButton.setForeground(Color.GREEN);
 		panel.add(huirButton);
 		
@@ -97,10 +104,13 @@ public class JuegoPanel extends JPanel {
 		});
 		
 		recogerButton = new JButton("Recoger");
+		recogerButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
+		recogerButton.setBackground(Color.GRAY);
 		recogerButton.setForeground(Color.GREEN);
 		panel.add(recogerButton);
 		
 		salirButton = new JButton("Salir");
+		salirButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		salirButton.setBackground(Color.BLACK);
 		salirButton.setForeground(Color.GREEN);
 		panel.add(salirButton);
@@ -119,6 +129,7 @@ public class JuegoPanel extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 		
 		textArea = new JTextArea();
+		textArea.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		scrollPane.setViewportView(textArea);
 		textArea.setEditable(false);
 		textArea.setForeground(Color.GREEN);

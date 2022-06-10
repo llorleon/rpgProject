@@ -23,6 +23,7 @@ import javax.swing.JProgressBar;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JScrollPane;
+import java.awt.Font;
 
 public class CombatePanel extends JPanel {
 	private static final long serialVersionUID = -2126587181153509748L;
@@ -34,7 +35,6 @@ public class CombatePanel extends JPanel {
 	private JPanel panel_1;
 	private JLabel enemigoLabel;
 	private JProgressBar enemigoBar;
-	private JLabel label;
 	private Personaje personaje;
 	private JPanel panel;
 	private JPanel panel_2;
@@ -79,10 +79,12 @@ public class CombatePanel extends JPanel {
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		enemigoLabel = new JLabel();
+		enemigoLabel.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		enemigoLabel.setForeground(Color.GREEN);
 		panel_1.add(enemigoLabel);
 		
 		enemigoBar = new JProgressBar();
+		enemigoBar.setForeground(Color.RED);
 		panel_1.add(enemigoBar);
 		
 		/**
@@ -105,6 +107,7 @@ public class CombatePanel extends JPanel {
 		 * Barra de vida de cualquier personaje (Amistoso)
 		 */
 		personajeBar = new JProgressBar();
+		personajeBar.setForeground(Color.GREEN);
 		panel_3.add(personajeBar);
 		
 		personajeBar.setMaximum(personaje.getMaxVida());
@@ -114,6 +117,7 @@ public class CombatePanel extends JPanel {
 		 * Barra de mana del personaje Mago, recurso con el que lanza hechizos
 		 */
 		manaBar = new JProgressBar();
+		manaBar.setForeground(Color.CYAN);
 		panel_3.add(manaBar);
 		
 		if (personaje instanceof Mago) {
@@ -123,14 +127,13 @@ public class CombatePanel extends JPanel {
 			manaBar.setValue(mago.getMana());
 		}
 		
-		label = new JLabel("New label");
-		panel_1.add(label);
-		
 		panel_2 = new JPanel();
 		panel_2.setBackground(Color.BLACK);
 		panel.add(panel_2);
 		
 		atacarButton = new JButton("Atacar");
+		atacarButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
+		atacarButton.setBackground(Color.GRAY);
 		atacarButton.setForeground(Color.GREEN);
 		panel_2.add(atacarButton);
 		
@@ -156,6 +159,8 @@ public class CombatePanel extends JPanel {
 		});
 		
 		hechizo1Button = new JButton("Hechizo");
+		hechizo1Button.setFont(new Font("Optima", Font.PLAIN, 13));
+		hechizo1Button.setBackground(Color.GRAY);
 		hechizo1Button.setForeground(Color.GREEN);
 		panel_2.add(hechizo1Button);
 		
@@ -199,6 +204,8 @@ public class CombatePanel extends JPanel {
 		});
 		
 		hechizo2Button = new JButton("New button");
+		hechizo2Button.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
+		hechizo2Button.setBackground(Color.GRAY);
 		hechizo2Button.setForeground(Color.GREEN);
 		panel_2.add(hechizo2Button);
 		
@@ -241,6 +248,8 @@ public class CombatePanel extends JPanel {
 		});
 		
 		pocionVidaButton = new JButton("Poción vida");
+		pocionVidaButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
+		pocionVidaButton.setBackground(Color.GRAY);
 		pocionVidaButton.setForeground(Color.GREEN);
 		
 		panel_2.add(pocionVidaButton);
@@ -277,6 +286,7 @@ public class CombatePanel extends JPanel {
 		});
 		
 		continuarButton = new JButton("Continuar");
+		continuarButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		continuarButton.setBackground(Color.BLACK);
 		continuarButton.setForeground(Color.GREEN);
 		panel_2.add(continuarButton);
@@ -294,6 +304,7 @@ public class CombatePanel extends JPanel {
 		});
 		
 		salirButton = new JButton("Salir");
+		salirButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		salirButton.setBackground(Color.BLACK);
 		salirButton.setForeground(Color.GREEN);
 		panel_2.add(salirButton);
@@ -310,6 +321,7 @@ public class CombatePanel extends JPanel {
 		});
 		
 		pocionManaButton = new JButton("Poción maná");
+		pocionManaButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		pocionManaButton.setForeground(Color.GREEN);
 		panel_2.add(pocionManaButton);
 		
@@ -318,6 +330,7 @@ public class CombatePanel extends JPanel {
 		
 		
 		textArea = new JTextArea();
+		textArea.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		scrollPane.setViewportView(textArea);
 		textArea.setForeground(Color.GREEN);
 		textArea.setBackground(Color.BLACK);

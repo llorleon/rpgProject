@@ -38,7 +38,7 @@ public class SeleccionPersonajePanel extends JPanel {
 		setLayout(gridBagLayout);
 
 		JLabel titulo = new JLabel("Bienvenido a Dungeons & Goblins, elija su clase:\n");
-		titulo.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		titulo.setFont(new Font("Hoefler Text", Font.PLAIN, 25));
 		titulo.setForeground(Color.GREEN);
 		titulo.setBackground(Color.BLACK);
 		titulo.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -53,8 +53,9 @@ public class SeleccionPersonajePanel extends JPanel {
 		 * Boton que desencadena la seleccion del mago en la partida
 		 */
 		JButton mago_1 = new JButton("Mago");
+		mago_1.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		mago_1.setForeground(Color.GREEN);
-		mago_1.setBackground(Color.BLACK);
+		mago_1.setBackground(Color.GRAY);
 		mago_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -85,8 +86,9 @@ public class SeleccionPersonajePanel extends JPanel {
 		 * Boton que desencadena la creacion del Arquero en la partida
 		 */
 		JButton arquero_1 = new JButton("Arquero");
+		arquero_1.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		arquero_1.setForeground(Color.GREEN);
-		arquero_1.setBackground(Color.BLACK);
+		arquero_1.setBackground(Color.GRAY);
 		arquero_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -118,8 +120,9 @@ public class SeleccionPersonajePanel extends JPanel {
 		 * Boton que desencadena la creacion del guerrero en la partida
 		 */
 		JButton guerrero_1 = new JButton("Guerrero");
+		guerrero_1.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		guerrero_1.setForeground(Color.GREEN);
-		guerrero_1.setBackground(Color.BLACK);
+		guerrero_1.setBackground(Color.GRAY);
 		guerrero_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -152,6 +155,7 @@ public class SeleccionPersonajePanel extends JPanel {
 		 * Boton para que nos lleve a al Panel de ver el log de la partida
 		 */
 		JButton ultimoLogButton = new JButton("Log última partida");
+		ultimoLogButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		ultimoLogButton.setBackground(Color.GRAY);
 		ultimoLogButton.setForeground(Color.GREEN);
 		ultimoLogButton.addMouseListener(new MouseAdapter() {

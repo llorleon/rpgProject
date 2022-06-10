@@ -48,13 +48,14 @@ public class ResumenPanel extends JPanel {
 		setBackground(Color.BLACK);
 		setLayout(new BorderLayout(0, 0));
 		JLabel lblHasElegidoLa = new JLabel("Has elegido la clase:");
-		lblHasElegidoLa.setFont(new Font("Lucida Grande", Font.PLAIN, 26));
+		lblHasElegidoLa.setFont(new Font("Hoefler Text", Font.PLAIN, 26));
 		lblHasElegidoLa.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHasElegidoLa.setForeground(Color.GREEN);
 		
 		add(lblHasElegidoLa, BorderLayout.NORTH);
 		
 		JTextArea textClase = new JTextArea();
+		textClase.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		textClase.setForeground(Color.GREEN);
 		textClase.setBackground(Color.BLACK);
 		textClase.setEditable(false);
@@ -62,6 +63,7 @@ public class ResumenPanel extends JPanel {
 		textClase.setText(sesion.getPersonaje().toString());
 		
 		JButton empezarButton = new JButton("Empezar");
+		empezarButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		empezarButton.setBackground(Color.GRAY);
 		empezarButton.setForeground(Color.GREEN);
 		add(empezarButton, BorderLayout.SOUTH);

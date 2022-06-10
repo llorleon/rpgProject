@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import java.awt.Font;
 
 /**
  * Panel en el que basicamente leemos el archivo log de la ultima partida
@@ -27,6 +28,7 @@ public class LogPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel = new JLabel("En la anterior partida...");
+		lblNewLabel.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		lblNewLabel.setForeground(Color.GREEN);
 		add(lblNewLabel, BorderLayout.NORTH);
 
@@ -34,6 +36,8 @@ public class LogPanel extends JPanel {
 		 * Boton para volver de nuevo a la seleccion de personaje
 		 */
 		JButton volverButton = new JButton("Volver");
+		volverButton.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
+		volverButton.setBackground(Color.GRAY);
 		volverButton.setForeground(Color.GREEN);
 		add(volverButton, BorderLayout.SOUTH);
 
@@ -48,6 +52,7 @@ public class LogPanel extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 
 		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Hoefler Text", Font.PLAIN, 13));
 		textArea.setForeground(Color.GREEN);
 		textArea.setBackground(Color.BLACK);
 		scrollPane.setViewportView(textArea);
