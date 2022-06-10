@@ -14,7 +14,13 @@ import dyc.clases.ObjetoConNombre;
 
 public class Hechizo extends ObjetoConNombre {
 
+	/**
+	 * El daño de cada hechizo lo determinamos con sus puntos de ataque
+	 */
 	int puntosAtaque;
+	/**
+	 * Establecemos el coste de mana de cada hechizo
+	 */
 	int costeMana;
 
 	/**

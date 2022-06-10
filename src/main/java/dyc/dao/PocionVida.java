@@ -8,7 +8,7 @@ import dyc.db.ConexionBD;
 import dyc.exception.ObjetosException;
 
 /**
- * DAO para recuperar de la BD la pocion de Vida, teniendo tanto la vida recuperado como el nombre de esta pocion
+ * DAO para recuperar de la BD la pocion de Vida, y hereda de Pocion
  * 
  * @author victorml
  *
@@ -16,6 +16,9 @@ import dyc.exception.ObjetosException;
 
 public class PocionVida extends Pocion {
 
+	/**
+	 * Cantidad de vidarecuperada de la pocion
+	 */
 	private byte vidaRecuperada;
 
 	

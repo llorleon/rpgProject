@@ -18,10 +18,18 @@ public class Sesion {
 	private Personaje personaje;
 	private Mapa mapa;
 
+	/**
+	 * Metodo vacio para llamar facilmente a sesion sin constructor
+	 * 
+	 */
 	public Sesion() {
 
 	}
 
+	/**
+	 * Metodo para recuperar el personaje con el que jugaremos la partida, la clase, arma,etc...
+	 * @return
+	 */
 	public Personaje getPersonaje() {
 		return personaje;
 	}
@@ -40,6 +48,7 @@ public class Sesion {
 		mapa = new Mapa(personaje);
 	}
 
+	
 	public Mapa getMapa() {
 		return mapa;
 	}

@@ -19,11 +19,25 @@ import java.io.IOException;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 
+/**
+ * Panel previo a empezar la partida, en este se mostrara las stats del personaje escogido y su inventario
+ * @author victorml
+ *
+ */
 public class ResumenPanel extends JPanel {
 
 	private static final long serialVersionUID = 4094030091183746399L;
 
+	/**
+	 * Constructor del ResumenPanel con una Frame y la sesion, para obtener los datos del personaje
+	 * @param v
+	 * @param sesion
+	 */
 	public ResumenPanel(VentanaFrame v, Sesion sesion) {
+		
+		/**
+		 * Escribimos en el log 
+		 */
 		try {
 			FileWriter fw = new FileWriter("log.txt");
 			fw.close();
@@ -52,6 +66,9 @@ public class ResumenPanel extends JPanel {
 		empezarButton.setForeground(Color.GREEN);
 		add(empezarButton, BorderLayout.SOUTH);
 		
+		/**
+		 * Boton para empezar la partida una vez visto el personaje escogido
+		 */
 		empezarButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

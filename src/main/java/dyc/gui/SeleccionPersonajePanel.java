@@ -50,6 +50,9 @@ public class SeleccionPersonajePanel extends JPanel {
 		gbc_titulo.gridy = 2;
 		add(titulo, gbc_titulo);
 
+		/**
+		 * Boton que desencadena la seleccion del mago en la partida
+		 */
 		JButton mago_1 = new JButton("Mago");
 		mago_1.setForeground(Color.GREEN);
 		mago_1.setBackground(Color.BLACK);
@@ -79,6 +82,9 @@ public class SeleccionPersonajePanel extends JPanel {
 			}
 		});
 
+		/**
+		 * Boton que desencadena la creacion del Arquero en la partida
+		 */
 		JButton arquero_1 = new JButton("Arquero");
 		arquero_1.setForeground(Color.GREEN);
 		arquero_1.setBackground(Color.BLACK);
@@ -109,6 +115,9 @@ public class SeleccionPersonajePanel extends JPanel {
 			}
 		});
 
+		/**
+		 * Boton que desencadena la creacion del guerrero en la partida
+		 */
 		JButton guerrero_1 = new JButton("Guerrero");
 		guerrero_1.setForeground(Color.GREEN);
 		guerrero_1.setBackground(Color.BLACK);
@@ -140,6 +149,9 @@ public class SeleccionPersonajePanel extends JPanel {
 			}
 		});
 		
+		/**
+		 * Boton para que nos lleve a al Panel de ver el log de la partida
+		 */
 		JButton ultimoLogButton = new JButton("Log última partida");
 		ultimoLogButton.setForeground(Color.GREEN);
 		ultimoLogButton.addMouseListener(new MouseAdapter() {

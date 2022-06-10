@@ -8,6 +8,11 @@ import javax.swing.JPanel;
 
 import dyc.clases.Sesion;
 
+/**
+ * Frame que sera usado como contenedor de todos los Jpanel
+ * @author victorml
+ *
+ */
 public class VentanaFrame extends JFrame {
 	
 	private static final long serialVersionUID = 7034760431371082687L;

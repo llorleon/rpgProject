@@ -53,6 +53,12 @@ public class CombatePanel extends JPanel {
 	private JScrollPane scrollPane;
 	private JuegoPanel juego;
 	
+	/**
+	 * Metodo para iniciar el combate 
+	 * @param v ventana del JFrame
+	 * @param sesion llamamos a la partida
+	 * @param juego y llamamos al JPanel de Juego para volver sin problema y continuar por donde lo dejamos
+	 */
 	public CombatePanel(VentanaFrame v, Sesion sesion, JuegoPanel juego) {
 		this.sesion = sesion;
 		
@@ -79,6 +85,9 @@ public class CombatePanel extends JPanel {
 		enemigoBar = new JProgressBar();
 		panel_1.add(enemigoBar);
 		
+		/**
+		 * Barra de vida del enemigo
+		 */
 		enemigo = sesion.getMapa().getLugar().getEnemigo();
 		enemigoLabel.setText(enemigo.getNombre());
 		enemigoBar.setMaximum(enemigo.getVida());
@@ -92,12 +101,18 @@ public class CombatePanel extends JPanel {
 		panel_3.setBackground(Color.BLACK);
 		panel.add(panel_3);
 		
+		/**
+		 * Barra de vida de cualquier personaje (Amistoso)
+		 */
 		personajeBar = new JProgressBar();
 		panel_3.add(personajeBar);
 		
 		personajeBar.setMaximum(personaje.getMaxVida());
 		personajeBar.setValue(personaje.getVida());
 		
+		/**
+		 * Barra de mana del personaje Mago, recurso con el que lanza hechizos
+		 */
 		manaBar = new JProgressBar();
 		panel_3.add(manaBar);
 		
@@ -119,9 +134,15 @@ public class CombatePanel extends JPanel {
 		atacarButton.setForeground(Color.GREEN);
 		panel_2.add(atacarButton);
 		
+		/**
+		 * Boton usado para las clases de Arquero y Guerrero, con esta atacamos al enemigo 
+		 */
 		atacarButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				/**
+				 * Daño generado aleatoriamente entre el daño del ataque base y el arma del personaje
+				 */
 				int danno = random.nextInt(personaje.getAtaque() + personaje.getArma().getPuntosAtaque() + 1);
 				
 				enemigo.restaVida(danno);
@@ -138,13 +159,23 @@ public class CombatePanel extends JPanel {
 		hechizo1Button.setForeground(Color.GREEN);
 		panel_2.add(hechizo1Button);
 		
+
+		/**
+		 * Primer hechizo que tiene el mago, al pursarlo haremos el daño establecido al enemigo
+		 */
 		hechizo1Button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				/**
+				 * Creamos un Mago
+				 */
 				Mago mago = (Mago) personaje;
 				Random random = new Random();
 				Hechizo hechizo = mago.getHechizo(hechizo1Button.getText());
 				
+				/**
+				 * El hechizo se lanzara siempre y cuando el mana sea superior al costedemana del hechizo
+				 */
 				if (mago.getMana() >= hechizo.getCosteMana()) {
 					int danno = random.nextInt(hechizo.getPuntosAtaque() + 1);
 					
@@ -157,6 +188,10 @@ public class CombatePanel extends JPanel {
 					juego.logAppend("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
 					
 					enemigoAtaca();
+					/**
+					 * Si no tiene mana y tampoco tiene pociones de mana, el enemigo atacara y mucho me temo
+					 * que has muerto...
+					 */
 				} else if (mago.getPocionMana() == null) {
 					enemigoAtaca();
 				}
@@ -167,13 +202,22 @@ public class CombatePanel extends JPanel {
 		hechizo2Button.setForeground(Color.GREEN);
 		panel_2.add(hechizo2Button);
 		
+		/**
+		 * Segundo hechizo que tiene el mago, al pursarlo haremos el daño establecido al enemigo
+		 */
 		hechizo2Button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				/**
+				 * Creamos un Mago
+				 */
 				Mago mago = (Mago) personaje;
 				Random random = new Random();
 				Hechizo hechizo = mago.getHechizo(hechizo2Button.getText());
 				
+				/**
+				 * El hechizo se lanzara siempre y cuando el mana sea superior al costedemana del hechizo
+				 */
 				if (mago.getMana() >= hechizo.getCosteMana()) {
 					int danno = random.nextInt(hechizo.getPuntosAtaque() + 1);
 					
@@ -186,6 +230,10 @@ public class CombatePanel extends JPanel {
 					juego.logAppend("Le haces " + danno + " puntos de daño a " + enemigo.getNombre() + "\n");
 					
 					enemigoAtaca();
+					/**
+					 * Si no tiene mana y tampoco tiene pociones de mana, el enemigo atacara y mucho me temo
+					 * que has muerto...
+					 */
 				} else if (mago.getPocionMana() == null) {
 					enemigoAtaca();
 				}
@@ -197,11 +245,24 @@ public class CombatePanel extends JPanel {
 		
 		panel_2.add(pocionVidaButton);
 		
+		/**
+		 * Boton que desencadena el uso de la pocion de vida
+		 */
+		
 		pocionVidaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				/**
+				 * Obtenemos el personaje de la partida
+				 */
 				Personaje personaje = sesion.getPersonaje();
+				/**
+				 * Obtenemos la pocion que vamos a usar
+				 */
 				PocionVida pocion = personaje.getPocionVida();
+				/**
+				 * La cantidad de vida que se recupera
+				 */
 				int recupera = pocion.getVidaRecuperada();
 				
 				textArea.append("Te bebes " + pocion.getNombre() + " y recuperas " + recupera + " vida\n");
@@ -220,6 +281,10 @@ public class CombatePanel extends JPanel {
 		continuarButton.setForeground(Color.GREEN);
 		panel_2.add(continuarButton);
 		
+		/**
+		 * Boton para continuar la partida si has salido victorioso del combate
+		 */
+		
 		continuarButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -232,6 +297,10 @@ public class CombatePanel extends JPanel {
 		salirButton.setBackground(Color.BLACK);
 		salirButton.setForeground(Color.GREEN);
 		panel_2.add(salirButton);
+		
+		/**
+		 * Boton para salir de la partida si has muerto
+		 */
 		
 		salirButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -275,8 +344,18 @@ public class CombatePanel extends JPanel {
 		actualizaBotones();
 	}
 	
+	/**
+	 * Metodo usado para crear el bucle de daño en el que el enemigo ataca cuando el personaje ataca, siempre despuesde del ataque 
+	 * del personaje
+	 * Esto ocurrirar siempre que el enemigo este vivo, si muere se acaba el combate o si el personaje no esta vivo, se acaba la partida
+	 * porque estas MUERTO :(
+	 */
+	
 	public void enemigoAtaca() {
 		if (enemigo.estaVivo()) {
+			/**
+			 * Daño aleatorio del enemigo
+			 */
 			int danno = random.nextInt(enemigo.getAtaque() + 1);
 			
 			personaje.restaVida(danno);
@@ -298,6 +377,11 @@ public class CombatePanel extends JPanel {
 			actualizaBotones();
 		}
 	}
+	
+	/**
+	 * Metodo para actualizar los botones, es decir, para ponerlos visibles o no dependiendo de la situacion
+	 * Si tienes pociones, si pierdes y mueres, si ganas y continuas...
+	 */
 
 	public void actualizaBotones() {
 		int nPociones = personaje.cuantasPocionesMana();
@@ -322,6 +406,9 @@ public class CombatePanel extends JPanel {
 			continuarButton.setVisible(false);
 			salirButton.setVisible(false);
 			
+			/**
+			 * Si el personaje es mago, activamos las opciones de hechizos
+			 */
 			if (personaje instanceof Mago) {
 				Mago mago = (Mago) personaje;
 				
@@ -332,6 +419,10 @@ public class CombatePanel extends JPanel {
 				hechizo1Button.setVisible(true);
 				hechizo2Button.setVisible(true);
 				
+				/**
+				 * Creamos un objeto array con los hechizos, de esta manera obtenemos su nombre y podemos hacer los botones de hechizo
+				 * con su respectivo nombre
+				 */
 				Object[] hechizos = mago.getHechizos().toArray();
 				
 				hechizo1Button.setText(hechizos[0].toString());

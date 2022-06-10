@@ -29,6 +29,9 @@ public class Mapa {
 	 */
 
 	public Mapa(Personaje personaje) throws SQLException, EnemigoException, ObjetosException {
+		/**
+		 * Creamos una matriz de lugares de 3x3, en el ocurriran eventos de manera aleatoria, pociones, enemigos...
+		 */
 		lugares = new Lugar[3][3];
 
 		for (int i = 0; i < lugares.length; i++) {
@@ -45,6 +48,11 @@ public class Mapa {
 	}
 	
 
+	/**
+	 * Metodo usado basicamente para recorrer la matriz y avanzar de lugar
+	 * 
+	 */
+	
 	public void avanzaLugar() {
 		lugar++;
 	}
@@ -67,6 +75,10 @@ public class Mapa {
 		return "Estas en la zona " + getLugar().getNombre();
 	}
 	
+	/**
+	 * Con este metodo terminamos la partida si superamos el juego, es decir la ultima casilla de la matriz
+	 * @return Terminar el juego a sobrepasar la matriz de 3x3
+	 */
 	public boolean juegoTerminado() {
 		return lugar == (lugares.length * lugares[0].length);
 	}

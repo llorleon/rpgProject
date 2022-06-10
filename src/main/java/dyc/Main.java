@@ -22,10 +22,27 @@ import dyc.gui.VentanaFrame;
  */
 public class Main {
 
+	/**
+	 * Metodo principal del programa donde inciamos el JFrame Ventana para mostrar interfaz grafica y donde llamamos a la sesion del juego
+	 * para iniciarla
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
+		/**
+		 * Iniciada VentanaFrame v que sera el frame que contenga todos los JPanel
+		 */
 		VentanaFrame v;
+		/**
+		 * Iniciada Sesion sesion que contendra todo lo referente al personaje y al mapa para iniciar la partida
+		 * 
+		 */
 		Sesion sesion;
 
+		/**
+		 * En este try catch, creamos los argumentos para que de manera automatica, si tenemos alguna de estas clases por argumentos
+		 * empecemos la partida con una clase automaticamente
+		 */
 		try {
 			sesion = new Sesion(); 
 			v = new VentanaFrame(sesion);

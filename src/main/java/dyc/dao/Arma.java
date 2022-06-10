@@ -44,11 +44,20 @@ public class Arma extends ObjetoConNombre {
 
 	}
 
+	/**
+	 * Obtenemos la cantidad de puntos de ataque del arma
+	 * @return devuelve la cantidad de daño que hace el arma
+	 */
 	public byte getPuntosAtaque() {
 
 		return puntosAtaque;
 	}
 
+	/**
+	 * Establecemos los puntos de ataque del arma
+	 * 
+	 * @param puntosAtaque los puntos de ataque asignados para el arma
+	 */
 	public void setPuntosAtaque(byte puntosAtaque) {
 		this.puntosAtaque = puntosAtaque;
 	}

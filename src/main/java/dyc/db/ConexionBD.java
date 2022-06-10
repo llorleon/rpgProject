@@ -18,6 +18,10 @@ public abstract class ConexionBD {
 	private final static String passwordBD = "12345678";
 	private static Connection conexion; // singleton
 
+	/**
+	 * Metodo para conectar a la BBDD
+	 * @return devuelve el stm de conexion a la BBDD o null si falla por una exception
+	 */
 	public static Statement conectar() {
 		try {
 			if (conexion == null) {
@@ -31,6 +35,9 @@ public abstract class ConexionBD {
 		}
 	}
 	
+	/**
+	 * Metodo usado para desconectar de la BBDD
+	 */
 	
 	public static void desconectar() {
 		if(conexion!=null) {

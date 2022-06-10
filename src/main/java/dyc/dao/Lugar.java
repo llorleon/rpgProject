@@ -79,7 +79,11 @@ public class Lugar extends ObjetoConNombre {
 
 		return texto;
 	}
-	
+	/**
+	 * Setter usado para determinar el ultimo lugar del mapa, en el que SI o SI tenga un enemigo final
+	 * @throws EnemigoException devuelve error si el enemigo no existe en la BBDD
+	 * @throws SQLException error por defecto de SQL
+	 */
 	public void setUltimoLugar() throws EnemigoException, SQLException {
 		enemigo = new JefeFinal();
 	}

@@ -10,12 +10,15 @@ import dyc.exception.ObjetosException;
 /**
  * DAO para recuperar de la BD la pocion de Mana, teniendo tanto el mana recuperado como el nombre de esta pocion
  * Esta solo podra ser usada por el Mago
- * 
+ * Hereda de pocion
  * @author victorml
  *
  */
 public class PocionMana extends Pocion {
 
+	/**
+	 * Cantidad de mana que recupera la pocion
+	 */
 	private byte manaRecuperada;
 	
 	/**

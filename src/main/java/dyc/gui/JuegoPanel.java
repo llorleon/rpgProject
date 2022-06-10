@@ -46,6 +46,9 @@ public class JuegoPanel extends JPanel {
 		atacarButton.setForeground(Color.GREEN);
 		panel.add(atacarButton);
 		
+		/**
+		 * Boton que inicia el combate, llamamos a ventana y cambiapantalla para crear un CombatePanel
+		 */
 		atacarButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -57,6 +60,9 @@ public class JuegoPanel extends JPanel {
 		siguienteButton.setForeground(Color.GREEN);
 		panel.add(siguienteButton);
 		
+		/**
+		 * Boton para avanzar en la aventura, pasamos a la siguiente zona
+		 */
 		siguienteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -70,6 +76,9 @@ public class JuegoPanel extends JPanel {
 		huirButton.setForeground(Color.GREEN);
 		panel.add(huirButton);
 		
+		/**
+		 * Boton con un random del 50%, si funciona podremos continuar, sino, solo nos dara la opcion a combatir
+		 */
 		huirButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -96,6 +105,9 @@ public class JuegoPanel extends JPanel {
 		salirButton.setForeground(Color.GREEN);
 		panel.add(salirButton);
 		
+		/**
+		 * Boton usado para salir de la partida
+		 */
 		salirButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -113,6 +125,9 @@ public class JuegoPanel extends JPanel {
 		textArea.setBackground(Color.BLACK);
 		textArea.setLineWrap(true);
 		
+		/**
+		 * Boton usado para recoger pociones
+		 */
 		recogerButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -130,6 +145,9 @@ public class JuegoPanel extends JPanel {
 		actualizaBotones();
 	}
 	
+	/**
+	 * Metodo usado para avanzar de lugar, usamos el append para que todo el log vaya escribiendose
+	 */
 	public void actualizaLugar() {
 		if (!sesion.getMapa().juegoTerminado()) {
 		    textArea.append(sesion.getMapa().getLugar().toString() + "\n");
@@ -140,6 +158,11 @@ public class JuegoPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * Metodo para actualizar los botones, es decir, para ponerlos visibles o no dependiendo de la situacion
+	 * Si tienes pociones, si pierdes y mueres, si ganas y continuas...
+	 */
+	
 	public void actualizaBotones() {
 		if (!sesion.getMapa().juegoTerminado()) {
 			salirButton.setVisible(false);
@@ -147,23 +170,38 @@ public class JuegoPanel extends JPanel {
 			Lugar lugar = sesion.getMapa().getLugar();
 			Enemigo enemigo = lugar.getEnemigo();
 			
+			/**
+			 * Si hay un enemigo, podremos atacar o Huir con un 50% de prob
+			 */
 			if (enemigo != null && enemigo.estaVivo()) {
 				atacarButton.setVisible(true);
 				huirButton.setVisible(true);
 				recogerButton.setVisible(false);
 				siguienteButton.setVisible(false);
-			} else if (lugar.getPocion() != null) {
+			}
+			/**
+			 * Si hay una pocion podremos recogerla
+			 */
+			else if (lugar.getPocion() != null) {
 				atacarButton.setVisible(false);
 				huirButton.setVisible(false);
 				recogerButton.setVisible(true);
 				siguienteButton.setVisible(true);
-			} else {
+			} 
+			/**
+			 * Si no ocurre nada podremos continuar al siguiente evento
+			 */
+			else {
 				atacarButton.setVisible(false);
 				huirButton.setVisible(false);
 				recogerButton.setVisible(false);
 				siguienteButton.setVisible(true);
 			}
-		} else {
+		} 
+		/**
+		 * Sino la partida habra terminado y podremos salir
+		 */
+		else {
 			atacarButton.setVisible(false);
 			huirButton.setVisible(false);
 			recogerButton.setVisible(false);
@@ -172,6 +210,10 @@ public class JuegoPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * Metodo usado para basicamente escribir el log de la partida, cremos el filewriter y damos la ruta del archivo que vamos a escribir
+	 * @param linea el texto que insertaremos en cada linea
+	 */
 	public void logAppend(String linea) {
 		try {
 			FileWriter fw = new FileWriter("log.txt", true);

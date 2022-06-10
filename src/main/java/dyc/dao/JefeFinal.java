@@ -8,7 +8,7 @@ import dyc.db.ConexionBD;
 import dyc.exception.EnemigoException;
 
 /**
- * Clase DAO que extiende de Objeto con nombre y obtenemos los datos de un JefeFinal
+ * Clase DAO que extiende enemigo y obtenemos los datos de un JefeFinal
  * 
  * @author victorml
  *

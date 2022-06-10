@@ -17,9 +17,21 @@ import dyc.exception.EnemigoException;
  */
 
 public class Enemigo {
+	/**
+	 * Variable para el nombre del enemigo
+	 */
 	private String nombre;
+	/**
+	 * Variable para la vida del enemigo
+	 */
 	private int vida;
+	/**
+	 * Variable para el ataque del enemigo
+	 */
 	private int ataque;
+	/**
+	 * Variable para la defensa del personaje
+	 */
 	private int defensa;
 
 	/**
@@ -99,6 +111,10 @@ public class Enemigo {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Metodo usado para restar la vida del enemigo en cada situacion de combate que tenga que recibir daño
+	 * @param vida la cantidad de vida
+	 */
 	public void restaVida(int vida) {
 		this.vida -= vida;
 	}
@@ -108,6 +124,10 @@ public class Enemigo {
 		return nombre + " con salud de: " + vida + " Ataque: " + ataque + " Defensa: " + defensa;
 	}
 	
+	/**
+	 * Metodo booleano para devolver true o false, de esta manera sabemos si el enemigo esta vivo o muert
+	 * @return devuelve el estado del enemigo, muerto o vivo
+	 */
 	public boolean estaVivo() {
 		return vida > 0; 
 	}

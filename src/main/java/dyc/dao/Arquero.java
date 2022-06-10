@@ -31,12 +31,25 @@ public class Arquero extends Personaje {
 	 */
 
 	public Arquero() throws SQLException, ClaseException, ObjetosException {
-
+		
+		/**
+		 * Asignamos el objetodefensivo, creandole un objeto defensivo a partir de la PK que es el nombre
+		 */
 		ObjetoDefensivo cuero = new ObjetoDefensivo("Armadura de Cuero");
+		/**
+		 * Asignamos el arma, creandole un objeto arma a partir de la PK que es el nombre
+		 */
 		Arma arco = new Arma("Arco Curvo");
+		
+		/**
+		 * Añadimos a la coleccion el arma y el objeto defensivo
+		 */
 		List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();
 		inventario.add(cuero);
 		inventario.add(arco);
+		/**
+		 * Hacemos el setinventario para que se actualice con cada play y podamos obtener el contenido
+		 */
 		setInventario(inventario);
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery("select * from arquero");

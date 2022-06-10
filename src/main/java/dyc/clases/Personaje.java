@@ -19,10 +19,28 @@ import dyc.dao.PocionVida;
  */
 
 public abstract class Personaje extends ObjetoConNombre {
+	
+	/**
+	 * maxVida sera usado para determinar la vida maxima del personaje y de esta manera que sea inamomible con pociones
+	 */
 	private int maxVida;
+	
+	/**
+	 * vida es la vida que tiene el personaje en la bbdd
+	 */
 	private int vida;
+	/**
+	 * ataque base del personaje
+	 */
 	private int ataque;
+	/**
+	 * defensa base del personaje
+	 */
 	private int defensa;
+	
+	/**
+	 * Coleccion que nos sirve para almacenar en el inventario del personaje, armas, pociones, objetosdefensivos...
+	 */
 	private List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();
 	
 	/**
@@ -46,6 +64,9 @@ public abstract class Personaje extends ObjetoConNombre {
 		this.inventario = inventario;
 	}
 
+	/**
+	 * Metodo sin argumentos para llamar facilmente a la clase personaje
+	 */
 	public Personaje() {
 		
 	}
@@ -124,7 +145,10 @@ public abstract class Personaje extends ObjetoConNombre {
 		return n;
 	}
 	
-	
+	/**
+	 * Metodo usado para recuperar las pociones que tiene el personaje en su inventario
+	 * @return devuelve las pociones que tiene el personaje
+	 */
 	
 	public PocionMana getPocionMana() {
 		PocionMana pocion = null;
@@ -141,6 +165,11 @@ public abstract class Personaje extends ObjetoConNombre {
 		
 		return pocion;
 	}
+	
+	/**
+	 * Metodo usado para recuperar las pociones que tiene el personaje en su inventario
+	 * @return devuelve las pociones que tiene el personaje
+	 */
 	
 	public PocionVida getPocionVida() {
 		PocionVida pocion = null;
@@ -218,6 +247,12 @@ public abstract class Personaje extends ObjetoConNombre {
 		return resultado;
 	}
 	
+	/**
+	 * Getter para obtener el arma que tiene asignada el personaje en su inventario
+	 * 
+	 * @return devuelve el arma que tiene el personaje en su inventario
+	 */
+	
 	public Arma getArma() {
 		Arma arma = null;
 		
@@ -230,9 +265,20 @@ public abstract class Personaje extends ObjetoConNombre {
 		return arma;
 	}
 	
+	/**
+	 * Metodo usado para determinar si el personaje esta vivo o on
+	 * @return devuelte true o false dependiendo de la vida del personaje
+	 */
+	
 	public boolean estaVivo() {
 		return vida > 0;
 	}
+	
+	/**
+	 * Metodo usado para el combate, actualiza la vida del personaje
+	 * 
+	 * @param vida es la vida que devuelve tras cualquier accion de combate
+	 */
 	
 	public void restaVida(int vida) {
 		this.vida -= vida;

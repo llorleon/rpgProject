@@ -31,11 +31,25 @@ public class Guerrero extends Personaje {
 	
 	public Guerrero() throws SQLException, ClaseException, ObjetosException {
 
+		/**
+		 * Asignamos el objetodefensivo, creandole un objeto defensivo a partir de la PK que es el nombre
+		 */
 		ObjetoDefensivo malla = new ObjetoDefensivo("Cota de malla");
+		
+		/**
+		 * Asignamos el arma, creandole un objeto arma a partir de la PK que es el nombre
+		 */
 		Arma espadon = new Arma("Espadon");
+		/**
+		 * Añadimos a la coleccion el arma y el objeto defensivo
+		 */
 		List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();
 		inventario.add(malla);
 		inventario.add(espadon);
+		
+		/**
+		 * Hacemos el setinventario para que se actualice con cada play y podamos obtener el contenido
+		 */
 		setInventario(inventario);
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery("select * from guerrero");

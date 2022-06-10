@@ -21,8 +21,17 @@ import dyc.exception.ObjetosException;
  *
  */
 public class Mago extends Personaje {
+	/**
+	 * Establecemos un mana maximo para que no podamos sobrepasarlo con las pociones de mana
+	 */
 	private int maxMana;
+	/**
+	 * Establecemos el mana base del mago
+	 */
 	private int mana;
+	/**
+	 * Coleccion de hechizos que puede lanzar 
+	 */
 	private HashMap<String, Hechizo> hechizos;
 
 	/**
@@ -35,9 +44,16 @@ public class Mago extends Personaje {
 	 */
 	
 	public Mago() throws SQLException, ClaseException, ObjetosException {
+		/**
+		 * Asignamos el objetodefensivo, creandole un objeto defensivo a partir de la PK que es el nombre
+		 */
 		ObjetoDefensivo tunica = new ObjetoDefensivo("Tunica de Mago");
 		List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();
 		inventario.add(tunica);
+		inventario.add(PocionMana.generaPocion(true));
+		/**
+		 * Añadimos a la coleccion el objeto defensivo
+		 */
 		setInventario(inventario);
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery("select * from mago");
@@ -57,6 +73,10 @@ public class Mago extends Personaje {
 		}
 
 		ResultSet cursor2 = smt.executeQuery("select * from hechizo"); 
+		
+		/**
+		 * Con este while recorremos el hashmap para obtener los hechizos que tendra el mago
+		 */
 
 		while (cursor2.next()) {
 			Hechizo hechizo = new Hechizo(cursor2.getString("nombre"), cursor2.getInt("puntosAtaque"),
@@ -116,14 +136,23 @@ public class Mago extends Personaje {
 		return resultado;
 	}
 	
+	/**
+	 * Metodo para establecer los hechizos al mago
+	 * @return devuelve la asignacion de hechizos a la coleccion
+	 */
 	public Set<String> getHechizos() {
 		return hechizos.keySet();
 	}
+	
 	
 	public Hechizo getHechizo(String nombre) {
 		return hechizos.get(nombre);
 	}
 
+	/**
+	 * Metodo usado para que el mana se gaste con cada hechizo que gastamos
+	 * @param mana usamos por parametro el coste de mana del hechizo para descontarlo del mana del mago
+	 */
 	public void consumeMana(int mana) {
 		this.mana -= mana;
 	}

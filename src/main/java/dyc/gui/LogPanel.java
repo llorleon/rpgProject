@@ -13,6 +13,11 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+/**
+ * Panel en el que basicamente leemos el archivo log de la ultima partida
+ * @author victorml
+ *
+ */
 public class LogPanel extends JPanel {
 
 	private static final long serialVersionUID = 92297959709232624L;
@@ -25,6 +30,9 @@ public class LogPanel extends JPanel {
 		lblNewLabel.setForeground(Color.GREEN);
 		add(lblNewLabel, BorderLayout.NORTH);
 
+		/**
+		 * Boton para volver de nuevo a la seleccion de personaje
+		 */
 		JButton volverButton = new JButton("Volver");
 		volverButton.setForeground(Color.GREEN);
 		add(volverButton, BorderLayout.SOUTH);
@@ -40,8 +48,13 @@ public class LogPanel extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 
 		JTextArea textArea = new JTextArea();
+		textArea.setForeground(Color.GREEN);
+		textArea.setBackground(Color.BLACK);
 		scrollPane.setViewportView(textArea);
 
+		/**
+		 * Filereader y BufferedReader para leer el log y que lo saquemos en el texArea
+		 */
 		try {
 			FileReader fr = new FileReader("log.txt");
 			BufferedReader br = new BufferedReader(fr);
