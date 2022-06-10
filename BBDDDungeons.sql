@@ -70,7 +70,7 @@ INSERT INTO enemigo VALUES ('Golem de Piedra',18,7,8);
 INSERT INTO enemigo VALUES ('Señor del Foso',28,5,4);
 INSERT INTO enemigo VALUES ('Sucubo',13,6,6);
 INSERT INTO enemigo VALUES ('Zombie Descerebrado',12,3,6);
-INSERT INTO enemigo VALUES ('Elemtal del Vacio',30,4,6);
+INSERT INTO enemigo VALUES ('Elemental del Vacio',30,4,6);
 
 CREATE TABLE jefeFinal(
 nombre VARCHAR(100) NOT NULL,
