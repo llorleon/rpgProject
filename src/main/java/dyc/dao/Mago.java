@@ -37,8 +37,7 @@ public class Mago extends Personaje {
 
 	/**
 	 * En este metodo conseguimos sacar toda la informacion de la BD de la clase Mago en la BD, le asignamos inventario.
-	 * En este metodo tambien asignamos el hechizo al mago, como ataque, en este caso Hechizo bolita, como arma
-	 * 
+	 * En este metodo tambien asignamos los hechizos al mago con una coleccion 
 	 * @throws SQLException Error lanzada por defecto en SQL
 	 * @throws ClaseException Error lanzado por no existir la clase en la BD
 	 * @throws ObjetosException Error lanzada por no haber objeto en la BD
@@ -54,6 +53,9 @@ public class Mago extends Personaje {
 		ObjetoDefensivo tunica = new ObjetoDefensivo("Tunica de Mago");
 		List<ObjetoConNombre> inventario = new ArrayList<ObjetoConNombre>();
 		inventario.add(tunica);
+		/**
+		 * Hago que el mago empiece siempre con una pocion de Mana
+		 */
 		inventario.add(pocionMana);
 		/**
 		 * Añadimos a la coleccion el objeto defensivo

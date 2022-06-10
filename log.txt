@@ -1,1 +1,16 @@
-Llegas a Profundidades Roca Negra y te encuentras un Zombie Descerebrado con salud de: 12 Ataque: 3 Defensa: 6
+Llegas a Cenec y te encuentras Pocion Mana, pocion de mana que recupera 20
+Has cogido Pocion Mana
+Llegas a Naxxramas
+Llegas a Forja de Almas y te encuentras un Señor del Foso con salud de: 28 Ataque: 5 Defensa: 4
+Le haces 7 puntos de daño a Señor del Foso
+Señor del Foso hizo 2 puntos de daño
+Le haces 2 puntos de daño a Señor del Foso
+Señor del Foso hizo 5 puntos de daño
+Le haces 7 puntos de daño a Señor del Foso
+Señor del Foso hizo 2 puntos de daño
+Le haces 7 puntos de daño a Señor del Foso
+Señor del Foso hizo 0 puntos de daño
+Le haces 1 puntos de daño a Señor del Foso
+Señor del Foso hizo 1 puntos de daño
+Le haces 7 puntos de daño a Señor del Foso
+Señor del Foso ha sido derrotado
