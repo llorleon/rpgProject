@@ -71,38 +71,80 @@ public abstract class Personaje extends ObjetoConNombre {
 		
 	}
 	
+	/**
+	 * Getter para tomar la vida de un personaje
+	 * @return devuelve un entero de la vida del personaje
+	 */
+	
 	public int getVida() {
 		return vida;
 	}
 
+	/**
+	 * Setter para establecer la vida del personaje
+	 * 
+	 * @param vida Sera la vida establecida en el personaje
+	 */
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
 
+	/**
+	 * Obtener la vida maxima del personaje
+	 * @return devuelve la vida maxima del peronsaje
+	 */
 	public int getMaxVida() {
 		return maxVida;
 	}
 
+	/**
+	 * Establecemos la vida maxima del peronsaje
+	 * 
+	 * @param maxVida la vida maxima que tendra el personjae
+	 */
 	public void setMaxVida(int maxVida) {
 		this.maxVida = maxVida;
 	}
 
+	/**
+	 * Ataque base del personaje sin tener en cuenta el del arma
+	 * @return se devuelve el ataque del perseonaje
+	 */
 	public int getAtaque() {
 		return ataque;
 	}
 
+	/**
+	 * Establecemos el ataque del personaje
+	 * 
+	 * @param ataque entero que establece el daño base del personaje
+	 */
 	public void setAtaque(int ataque) {
 		this.ataque = ataque;
 	}
 
+	/**
+	 * Obtenemos la estadistica defensa del personaje
+	 * @return devuelve la cantidad de defensa
+	 */
 	public int getDefensa() {
 		return defensa;
 	}
 
+	/**
+	 * Establecemos la defensa del personaje
+	 * @param defensa el entero que establece la defensa del personaje
+	 */
 	public void setDefensa(int defensa) {
 		this.defensa = defensa;
 	}
 
+	/**
+	 * Obtenemos todos los objetos añadidos en el inventario del personaje
+	 * 
+	 * @return devuelve la lista de objetos
+	 */
+	
 	public List<ObjetoConNombre> getInventario() {
 		return inventario;
 	}

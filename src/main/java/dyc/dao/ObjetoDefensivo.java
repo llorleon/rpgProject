@@ -48,10 +48,18 @@ public class ObjetoDefensivo extends ObjetoConNombre {
 
 	}
 
+	/**
+	 * Obtenemos el valor de objetoDefensivo
+	 * @return devuelve el valor
+	 */
 	public byte getPuntosDefensa() {
 		return puntosDefensa;
 	}
 
+	/**
+	 * Establecemos los puntos dedefensa
+	 * @param puntosDefensa valor que definira la defensa del  objeto
+	 */
 	public void setPuntosDefensa(byte puntosDefensa) {
 		this.puntosDefensa = puntosDefensa;
 	}

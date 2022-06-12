@@ -44,18 +44,34 @@ public class Lugar extends ObjetoConNombre {
 		pocion = Pocion.generaPocion(personaje instanceof Mago);
 	}
 
+	/**
+	 * Obtenemos el enemigo que esta puesto en un lugar del mapa
+	 * @return nos devuelve el enemigo
+	 */
 	public Enemigo getEnemigo() {
 		return enemigo;
 	}
+	/**
+	 * Establecemos un enemigo en un lugar
+	 * @param enemigo pasamos por argumento un enemigo
+	 */
 
 	public void setEnemigo(Enemigo enemigo) {
 		this.enemigo = enemigo;
 	}
 
+	/**
+	 * Obtenemos si hay pocion en un lugar
+	 * @return devuelve una pocion
+	 */ 
 	public Pocion getPocion() {
 		return pocion;
 	}
 
+	/**
+	 * Establecemos una pocion en un lugar
+	 * @param pocion argumento pasamos una pocion de algun tipo, vida o mana
+	 */
 	public void setPocion(Pocion pocion) {
 		this.pocion = pocion;
 	}

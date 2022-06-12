@@ -41,9 +41,19 @@ public class PocionMana extends Pocion {
 		ConexionBD.desconectar();
 		
 	}
+	
+	/**
+	 * Obtenemos la cantidad de Mana recuperada de una pocion de Mana
+	 * @return devuelve la cantidad recuperada
+	 */
 	public byte getManaRecuperada() {
 		return manaRecuperada;
 	}
+	
+	/**
+	 * Establecemos el mana que recupera una pocion de Manaa
+	 * @param manaRecuperada valor que recuperara la pocion
+	 */
 	public void setManaRecuperada(byte manaRecuperada) {
 		this.manaRecuperada = manaRecuperada;
 	}

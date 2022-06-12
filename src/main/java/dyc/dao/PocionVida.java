@@ -44,10 +44,18 @@ public class PocionVida extends Pocion {
 
 	}
 
+	/**
+	 * Obtenemos la cantidad de vida que recupera pocion de Vida
+	 * @return devuelve la cantidad que recupera
+	 */
 	public byte getVidaRecuperada() {
 		return vidaRecuperada;
 	}
 
+	/**
+	 * Establecemos la cantidad de vida que recuperara la pocion de vida
+	 * @param vidaRecuperada cantidad de Vida que se recuperara
+	 */
 	public void setVidaRecuperada(byte vidaRecuperada) {
 		this.vidaRecuperada = vidaRecuperada;
 	}

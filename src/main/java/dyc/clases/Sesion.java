@@ -49,9 +49,18 @@ public class Sesion {
 	}
 
 	
+	/**
+	 * Obtenemos el mapa completo con sus enemigos y lugares
+	 * @return devuelve el mapa comleto
+	 */
 	public Mapa getMapa() {
 		return mapa;
 	}
+	
+	/**
+	 * Establecemos el mapa
+	 * @param mapa
+	 */
 
 	public void setMapa(Mapa mapa) {
 		this.mapa = mapa;

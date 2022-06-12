@@ -38,17 +38,34 @@ public class Hechizo extends ObjetoConNombre {
 		this.costeMana = costeMana;
 	}
 
+	/**
+	 * Obtenemos los puntos de ataques del  hechizo
+	 * @return entero de daño del hechizo
+	 */
 	public int getPuntosAtaque() {
 		return puntosAtaque;
 	}
 
+	/**
+	 * Establecemos el daño de ataque del hechizo
+	 * @param puntosAtaque entero que da valor al daño del hechizo
+	 */
 	public void setPuntosAtaque(int puntosAtaque) {
 		this.puntosAtaque = puntosAtaque;
 	}
 
+	/**
+	 * Obtenemos el coste de mana de cada hechizo
+	 * @return devuelve el coste
+	 */
 	public int getCosteMana() {
 		return costeMana;
 	}
+	
+	/**
+	 * Establecemos coste de mana de cada hechizo
+	 * @param costeMana entero de mana que nos restara al usar un hechizo
+	 */
 
 	public void setCosteMana(int costeMana) {
 		this.costeMana = costeMana;

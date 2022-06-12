@@ -79,34 +79,67 @@ public class Enemigo {
 		return enemigo;
 	}
 
+	/**
+	 * Obtenemos la vida establecida en el enemigo
+	 * @return devuelve la cantidad de vida del enemigo
+	 */
 	public int getVida() {
 		return vida;
 	}
 
+	/**
+	 * Establecemos la vida del enemigo
+	 * 
+	 * @param vida cantidad de vida del enemigo
+	 */
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
 
+	/**
+	 * Obtenemos el ataque establecido en el enemigo
+	 * @return devuelve el numero de daño del enemigo
+	 */
 	public int getAtaque() {
 		return ataque;
 	}
 
+	/**
+	 * Establecemos el daño del enemigo
+	 * @param ataque entero de daño del enemigo
+	 */
 	public void setAtaque(int ataque) {
 		this.ataque = ataque;
 	}
 
+	/**
+	 * Obtenemos la defensa del enemigo
+	 * @return devuelve int de cantidad de defensa
+	 */
 	public int getDefensa() {
 		return defensa;
 	}
 
+	/**
+	 * Establecemos la defensa del enemigo
+	 * @param defensa entero que da valor a la defensa del enemigo
+	 */
 	public void setDefensa(int defensa) {
 		this.defensa = defensa;
 	}
 
+	/**
+	 * Obtenemos el nombre del enemigo
+	 * @return devuelve el nombre del enemigo
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Establecemos el nombre del enemigo
+	 * @param nombre String que da nombre al enemigo
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

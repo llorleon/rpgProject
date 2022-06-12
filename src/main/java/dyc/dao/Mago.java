@@ -100,18 +100,35 @@ public class Mago extends Personaje {
 
 	}
 
+	/**
+	 * Obtenemos el mana del Mago
+	 * @return devuelve entero del mana del mago
+	 */
 	public int getMana() {
 		return mana;
 	}
 
+	/**
+	 * Establecemos valor al mana del Mago
+	 * @param mana entero que define el mana del MAgo
+	 */
 	public void setMana(int mana) {
 		this.mana = mana;
 	}
 
+	/**
+	 * Obtenemos el maximo de mana del Mago, para no sobrepasarlo con pociones de Mana
+	 * @return devuelve el maximo valor del Mana
+	 */
 	public int getMaxMana() {
 		return maxMana;
 	}
 
+	/**
+	 * Establecemos el valor maximo del Mana
+	 * 
+	 * @param maxMana argumento entero para definir el Manaa Maximo
+	 */
 	public void setMaxMana(int maxMana) {
 		this.maxMana = maxMana;
 	}
