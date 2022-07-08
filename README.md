@@ -1,4 +1,4 @@
-# proyectoProgramacion2Intento
+#rpgProject
 Small project creating a text-based RPG simulator, for the subject of Programming in JAVA
 
 
